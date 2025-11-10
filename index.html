@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CPQ Solutions – Schneller zu besseren Angeboten</title>
+  <meta name="description" content="CPQ-Integration, camos.Develop, Schnittstellen & Automation für den Mittelstand – von Kai Birkenbusch." />
+  <style>
+    :root{--bg:#0f172a;--muted:#94a3b8;--fg:#e2e8f0;--accent:#38bdf8;}
+    *{box-sizing:border-box} body{margin:0;font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg)}
+    .wrap{max-width:960px;margin:0 auto;padding:48px 20px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:16px}
+    h1{font-size:clamp(28px,4vw,44px);margin:24px 0 8px}
+    .sub{color:var(--muted);font-size:1.1rem}
+    .cta{display:inline-block;padding:12px 18px;border:1px solid var(--accent);color:var(--accent);border-radius:10px;text-decoration:none;font-weight:600}
+    .cta:hover{background:rgba(56,189,248,.1)}
+    section{margin:36px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .card{border:1px solid #1f2937;border-radius:14px;padding:18px;background:rgba(255,255,255,.02)}
+    footer{margin-top:48px;font-size:.9rem;color:var(--muted)}
+    footer a{color:inherit}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div><strong>CPQ&nbsp;Solutions</strong></div>
+      <nav><a class="cta" href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Termin anfragen</a></nav>
+    </header>
+
+    <main>
+      <h1>CPQ-Integration <span style="color:var(--accent)">ohne Reibungsverluste</span></h1>
+      <p class="sub">camos.Develop • camos.Quotation • Microsoft SQL • Schnittstellen & Automation</p>
+
+      <section class="grid">
+        <div class="card"><h3>Integration</h3><p>Saubere Anbindung von ERP/CRM, Datenmodellen und Variantenlogik.</p></div>
+        <div class="card"><h3>Beschleunigung</h3><p>Schnellere Angebotsprozesse durch klare Workflows & Templates.</p></div>
+        <div class="card"><h3>Automation</h3><p>Jobs, Validierungen & Monitoring – weniger manuelle Arbeit.</p></div>
+      </section>
+
+      <section>
+        <h3>Kurz zu mir</h3>
+        <p>Kai Birkenbusch, Senior Camos-Entwickler & CPQ-Integrationsexperte. Fokus: Schnittstellen, Prozessintegration, Special Features für den Mittelstand.</p>
+      </section>
+
+      <section>
+        <a class="cta" href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Jetzt Projekt besprechen</a>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="y"></span> CPQ Solutions</div>
+      <div><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div>
+    </footer>
+  </div>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
