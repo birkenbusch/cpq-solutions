@@ -19,6 +19,14 @@
     .card{border:1px solid #1f2937;border-radius:14px;padding:18px;background:rgba(255,255,255,.02)}
     footer{margin-top:48px;font-size:.9rem;color:var(--muted)}
     footer a{color:inherit}
+    a {
+      color: var(--accent);          /* Hellblauer Ton (aus deiner Variable) */
+      text-decoration: none;         /* Kein Unterstrich */
+      transition: color 0.2s ease;   /* Weicher Farbwechsel */
+    }
+    a:hover {
+      color: #ffffff;                /* Weiß beim Hover */
+    }
   </style>
 </head>
 <body>
@@ -75,6 +83,7 @@
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
+
 
 
 
