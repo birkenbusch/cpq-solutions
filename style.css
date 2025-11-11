@@ -1,0 +1,130 @@
+<style>
+  :root {
+    --bg: #0f172a;
+    --muted: #94a3b8;
+    --fg: #e2e8f0;
+    --accent: #38bdf8;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font: 16px/1.6 system-ui, Segoe UI, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 20px;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    margin: 24px 0 8px;
+  }
+
+  .sub {
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+
+  /* CTA-Button */
+  .cta {
+    display: inline-block;
+    padding: 12px 18px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .cta:hover {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent);
+  }
+
+  section {
+    margin: 36px 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    border: 1px solid #1f2937;
+    border-radius: 14px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  footer {
+    margin-top: 48px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  footer a {
+    color: inherit;
+  }
+
+  /* Links allgemein */
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: #ffffff;
+  }
+
+  /* Bilder responsiv machen */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Logo im Header */
+  header img,
+  header svg {
+    width: clamp(120px, 28vw, 220px);
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  /* QR-Codes */
+  .qr {
+    width: clamp(140px, 40vw, 220px);
+    height: auto;
+    margin: 0 auto;
+  }
+
+  /* Header-Layout auf kleineren Screens */
+  @media (max-width: 560px) {
+    header {
+      flex-wrap: wrap;
+    }
+
+    nav {
+      flex: none;
+    }
+  }
+</style>
