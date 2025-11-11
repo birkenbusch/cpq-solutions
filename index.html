@@ -27,6 +27,36 @@
     a:hover {
       color: #ffffff;                /* Weiß beim Hover */
     }
+    /* CTA-Styles fixen: Textfarbe beim Hover beibehalten */
+    a.cta:hover {
+      color: var(--accent);
+    }
+    /* Bilder responsiv machen */
+    img { 
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* Falls du ein Logo-Bild oder Inline-SVG im Header einsetzt: */
+    header img, 
+    header svg {
+      width: clamp(120px, 28vw, 220px);
+      height: auto;
+      flex-shrink: 0;
+    }
+    /* Die QR-Codes kleiner auf Phones, aber angenehm groß am Desktop */
+    .qr {
+      width: clamp(140px, 40vw, 220px);
+      height: auto;
+      margin: 0 auto; /* zentriert im <p align="center"> Ersatz */
+    }
+    
+    /* Kleiner Bonus: Header darf umbrechen statt zu überlappen */
+    @media (max-width: 560px) {
+      header { flex-wrap: wrap; }
+      nav { flex: none; }
+    }
+
   </style>
 </head>
 <body>
@@ -56,7 +86,7 @@
           <a href="https://www.linkedin.com/in/kai-birkenbusch-0292b8146/" target="_blank">
             <h3>LinkedIn</h3>
             <p align="center">
-              <img src="qr_LinkedIn.svg" width="250" height="250" alt="LinkedIn QR-Code">  
+              <img src="qr_LinkedIn.svg" class="qr" alt="LinkedIn QR-Code">  
             </p>
           </a>
         </div>
@@ -64,7 +94,7 @@
           <a href="https://www.xing.com/profile/Kai_Birkenbusch" target="_blank" >
             <h3>XING</h3>
             <p align="center">
-              <img src="qr_XING.svg" width="250" height="250" alt="XING QR-Code">
+              <img src="qr_XING.svg" class="qr" alt="XING QR-Code">
             </p>  
           </a>
         </div>
@@ -83,16 +113,3 @@
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
