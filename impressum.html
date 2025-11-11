@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Impressum – CPQ Solutions</title>
+  <meta name="description" content="Impressum von CPQ Solutions – Kai Birkenbusch">
+  <style>
+    :root{--bg:#0f172a;--muted:#94a3b8;--fg:#e2e8f0;--accent:#38bdf8;}
+    *{box-sizing:border-box}
+    body{margin:0;font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg)}
+    .wrap{max-width:960px;margin:0 auto;padding:48px 20px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .cta{display:inline-block;padding:12px 18px;border:1px solid var(--accent);color:var(--accent);border-radius:10px;text-decoration:none;font-weight:600}
+    .cta:hover{background:rgba(56,189,248,.1)}
+    h1{font-size:clamp(28px,4vw,44px);margin:24px 0 8px}
+    h2{margin:28px 0 8px}
+    a{color:var(--accent)}
+    .card{border:1px solid #1f2937;border-radius:14px;padding:18px;background:rgba(255,255,255,.02)}
+    .muted{color:var(--muted);font-size:.95rem}
+    footer{margin-top:48px;font-size:.9rem;color:var(--muted)}
+    footer a{color:inherit}
+    main section{margin:24px 0}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div><a href="/" class="cta" aria-label="Zur Startseite">← Zurück</a></div>
+      <nav><a class="cta" href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Termin anfragen</a></nav>
+    </header>
+
+    <main>
+      <h1>Impressum</h1>
+
+      <section class="card">
+        <p><strong>Diensteanbieter / Verantwortlich i.S.d. § 5 DDG</strong></p>
+        <p>
+          Kai Birkenbusch<br>
+          CPQ Solutions (Einzelunternehmen)<br>
+          c/o Online-Impressum.de #4879<br>
+          Europaring 60<br>
+          53757 Sankt Augustin, Deutschland
+        </p>
+
+        <p>
+          <strong>Kontakt</strong><br>
+          E-Mail: <a href="mailto:kai-birkenbusch@cpq-solutions.de">kai-birkenbusch@cpq-solutions.de</a>
+        </p>
+
+        <p>
+          <strong>Verantwortlich für den Inhalt</strong> (§ 18 Abs. 2 MStV):<br>
+          Kai Birkenbusch, Anschrift wie oben.
+        </p>
+
+        <p>
+          <strong>Hosting</strong>: GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA (GitHub Pages/CDN).
+        </p>
+      </section>
+
+      <section>
+        <h2>Haftung für Inhalte</h2>
+        <p>Als Diensteanbieter sind wir gemäß § 5 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Für fremde Inhalte (z. B. verlinkte Seiten) besteht keine Haftung; hierfür sind ausschließlich deren Betreiber verantwortlich.</p>
+      </section>
+
+      <section>
+        <h2>Externe Links</h2>
+        <p>Diese Website enthält Verlinkungen zu externen Profilen (z. B. LinkedIn, XING). Auf die Inhalte und Datenverarbeitung dieser Anbieter haben wir keinen Einfluss. Bitte beachten Sie die jeweiligen Datenschutzhinweise der Drittanbieter.</p>
+      </section>
+
+      <section>
+        <h2>Urheberrecht</h2>
+        <p>Die Inhalte dieser Website (Texte, Layout, eigene Bilder) unterliegen dem Urheberrecht. Jede Verwertung bedarf der vorherigen Zustimmung, soweit sie nicht gesetzlich gestattet ist.</p>
+      </section>
+
+      <p class="muted">Rechtsgrundlagen: § 5 Digitale-Dienste-Gesetz (DDG); ggf. § 18 MStV.</p>
+    </main>
+
+    <footer>
+      <div>© <span id="y"></span> CPQ Solutions</div>
+      <div><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div>
+    </footer>
+  </div>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
