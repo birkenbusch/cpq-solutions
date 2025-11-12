@@ -117,6 +117,7 @@
     width: clamp(200px, 45vw, 300px);
     height: auto;             /* bleibt flexibel */
     padding: 8px;             /* etwas Abstand – verhindert Überdeckung */
+    text-align: center;
     
     /* Schärfe-Hinweise für Browser */
     image-rendering: -webkit-optimize-contrast; /* Safari/iOS */
