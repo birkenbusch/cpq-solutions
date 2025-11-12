@@ -131,8 +131,8 @@
   /* Header-Layout auf kleineren Screens */
   @media (max-width: 768px) {
     .qr {
-      max-width: 340px;
-      width: clamp(220px, 70vw, 340px);
+      max-width: 350px;
+      width: clamp(220px, 70vw, 350px);
     }
 
     header {
