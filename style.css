@@ -119,6 +119,11 @@
     padding: 8px;             /* etwas Abstand – verhindert Überdeckung */
   }
 
+  /* Zentrierte Inhalte (z. B. QR-Codes in Cards) */
+  .center {
+    text-align: center;
+  }
+
   /* Header-Layout auf kleineren Screens */
   @media (max-width: 560px) {
     header {
