@@ -111,11 +111,12 @@
 
   /* QR-Codes */
   .qr {
-    aspect-ratio: 1 / 1;     /* erzwingt Quadrat */
+    aspect-ratio: 1 / 1;      /* erzwingt Quadrat */
     object-fit: contain;      /* skaliert vollständig, ohne Zuschnitt */
     max-width: 220px;         /* Deckel wie gehabt */
     width: clamp(140px, 40vw, 220px);
     height: auto;             /* bleibt flexibel */
+    padding: 8px;             /* etwas Abstand – verhindert Überdeckung */
   }
 
   /* Header-Layout auf kleineren Screens */
