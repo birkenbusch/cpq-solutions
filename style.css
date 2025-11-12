@@ -113,8 +113,8 @@
   .qr {
     aspect-ratio: 1 / 1;      /* erzwingt Quadrat */
     object-fit: contain;      /* skaliert vollständig, ohne Zuschnitt */
-    width: 300px;         /* Deckel wie gehabt */
-    /*width: clamp(200px, 45vw, 300px);*/
+    max-width: 300px;         /* Deckel wie gehabt */
+    width: clamp(200px, 45vw, 300px);*/
     height: auto;             /* bleibt flexibel */
     padding: 8px;             /* etwas Abstand – verhindert Überdeckung */
     text-align: center;
@@ -139,11 +139,6 @@
       max-width: 350px;
       width: clamp(220px, 70vw, 350px);
     }
-*/
-  @media (max-width: 900px) { .qr { width: 260px; } }
-  @media (max-width: 700px) { .qr { width: 240px; } }
-  @media (max-width: 560px) { .qr { width: 220px; } }
-
     
     header {
       flex-wrap: wrap;
