@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="360" height="360" viewBox="0 0 360 360">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 360 360">
 	<path fill="#0f172a" d="M0 0h360v360H0z"/>
 	<defs transform="translate(16 16)">
 		<linearGradient id="a" gradientTransform="rotate(90)">
