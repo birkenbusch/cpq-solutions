@@ -126,6 +126,11 @@
 
   /* Header-Layout auf kleineren Screens */
   @media (max-width: 560px) {
+    .qr {
+      max-width: 340px;
+      width: clamp(220px, 70vw, 340px);
+    }
+
     header {
       flex-wrap: wrap;
     }
