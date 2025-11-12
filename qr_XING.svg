@@ -31,7 +31,9 @@
 		</mask>
 	</defs>
 	<path fill="url(#a)" d="M0 0h333v333H0z" mask="url(#b)" transform="translate(18 18)"/>
-	<svg xmlns="http://www.w3.org/2000/svg" transform="translate(140 140)scale(.08)" viewBox="0 0 1000 1000">
+	<circle cx="180" cy="180" r="44" fill="#fff" opacity=".95"/>
+	<svg  x="38.888%" y="38.888%" width="22.222%" height="22.222%"
+     viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
 		<g transform="translate(0 -24)">
 			<title/>
 			<path fill="none" d="M-1-1h1026v1026H-1z"/>
