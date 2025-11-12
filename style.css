@@ -114,7 +114,7 @@
     aspect-ratio: 1 / 1;      /* erzwingt Quadrat */
     object-fit: contain;      /* skaliert vollständig, ohne Zuschnitt */
     max-width: 300px;         /* Deckel wie gehabt */
-    width: clamp(200px, 45vw, 300px);*/
+    width: clamp(200px, 45vw, 300px);
     height: auto;             /* bleibt flexibel */
     padding: 8px;             /* etwas Abstand – verhindert Überdeckung */
     text-align: center;
@@ -124,17 +124,13 @@
     image-rendering: crisp-edges;               /* andere */
   }
 
-
-
-
-
   /* Zentrierte Inhalte (z. B. QR-Codes in Cards) */
   .center {
     text-align: center;
   }
 
   /* Header-Layout auf kleineren Screens */
-  /*@media (max-width: 768px) {
+  @media (max-width: 768px) {
     .qr {
       max-width: 350px;
       width: clamp(220px, 70vw, 350px);
