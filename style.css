@@ -117,6 +117,10 @@
     width: clamp(200px, 45vw, 300px);
     height: auto;             /* bleibt flexibel */
     padding: 8px;             /* etwas Abstand – verhindert Überdeckung */
+    
+    /* Schärfe-Hinweise für Browser */
+    image-rendering: -webkit-optimize-contrast; /* Safari/iOS */
+    image-rendering: crisp-edges;               /* andere */
   }
 
   /* Zentrierte Inhalte (z. B. QR-Codes in Cards) */
@@ -125,7 +129,7 @@
   }
 
   /* Header-Layout auf kleineren Screens */
-  @media (max-width: 560px) {
+  @media (max-width: 768px) {
     .qr {
       max-width: 340px;
       width: clamp(220px, 70vw, 340px);
