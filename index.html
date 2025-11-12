@@ -58,38 +58,12 @@
       <div><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
     </footer>
   </div>
+
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
-
-  <script>
-  window.addEventListener('load', () => {
-    const link = document.querySelector('link[href*="style.css"]');
-    const message = document.createElement('div');
-    message.style.position = 'fixed';
-    message.style.bottom = '8px';
-    message.style.right = '8px';
-    message.style.padding = '6px 10px';
-    message.style.borderRadius = '6px';
-    message.style.fontSize = '12px';
-    message.style.fontFamily = 'monospace';
-    message.style.zIndex = '9999';
-
-    if (link && link.sheet && link.sheet.cssRules.length > 0) {
-      message.textContent = '✅ style.css geladen';
-      message.style.background = 'rgba(0,200,0,0.15)';
-      message.style.color = '#00cc66';
-    } else {
-      message.textContent = '⚠️ style.css NICHT gefunden!';
-      message.style.background = 'rgba(200,0,0,0.15)';
-      message.style.color = '#ff4444';
-    }
-
-    document.body.appendChild(message);
-    setTimeout(() => message.remove(), 4000);
-  });
-</script>
 
 </body>
 </html>
+
 
 
 
