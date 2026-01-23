@@ -143,4 +143,38 @@
     nav {
       flex: none;
     }
+
+    /* Exali Siegel + Text nebeneinander, schön zentriert */
+    .insurance-row{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;         /* Mobile: untereinander */
+      text-align:left;
+    }
+    
+    /* Siegelgröße fixieren (globales img-CSS überschreiben) */
+    .insurance-badge{
+      width:120px;
+      height:120px;
+      max-width:none;         /* wichtig gegen img{max-width:100%} */
+    }
+    
+    /* Absatzabstände entschärfen */
+    .insurance-text p{
+      margin:0;
+    }
+    
+    .insurance-text p + p{
+      margin-top:8px;
+    }
+    
+    /* Mobile: Text zentrieren */
+    @media (max-width: 520px){
+      .insurance-row{
+        text-align:center;
+      }
+    }
+
   }
