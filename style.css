@@ -1,180 +1,185 @@
-  :root {
-    --bg: #0f172a;
-    --muted: #94a3b8;
-    --fg: #e2e8f0;
-    --accent: #38bdf8;
-  }
+:root {
+  --bg: #0f172a;
+  --muted: #94a3b8;
+  --fg: #e2e8f0;
+  --accent: #38bdf8;
+}
 
-  * {
-    box-sizing: border-box;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  body {
-    margin: 0;
-    font: 16px/1.6 system-ui, Segoe UI, Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--fg);
-  }
+body {
+  margin: 0;
+  font: 16px/1.6 system-ui, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
 
-  .wrap {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 48px 20px;
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+h1 {
+  font-size: clamp(28px, 4vw, 44px);
+  margin: 24px 0 8px;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+/* gedämpfter Text (Hinweise, kleine Zusatzinfos) */
+.muted {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* CTA-Button */
+.cta {
+  display: inline-block;
+  padding: 12px 18px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cta:hover {
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent);
+}
+
+section {
+  margin: 36px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+footer {
+  margin-top: 48px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+footer a {
+  color: inherit;
+}
+
+/* Links allgemein */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+/* Bilder responsiv machen */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Logo im Header */
+header img,
+header svg {
+  width: clamp(120px, 28vw, 220px);
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* QR-Codes */
+.qr {
+  aspect-ratio: 1 / 1;      /* erzwingt Quadrat */
+  object-fit: contain;      /* skaliert vollständig, ohne Zuschnitt */
+  max-width: 300px;         /* Deckel wie gehabt */
+  width: clamp(200px, 45vw, 300px);
+  height: auto;             /* bleibt flexibel */
+  padding: 8px;             /* etwas Abstand – verhindert Überdeckung */
+  text-align: center;
+
+  /* Schärfe-Hinweise für Browser */
+  image-rendering: -webkit-optimize-contrast; /* Safari/iOS */
+  image-rendering: crisp-edges;               /* andere */
+}
+
+/* Zentrierte Inhalte (z. B. QR-Codes in Cards) */
+.center {
+  text-align: center;
+}
+
+/* Exali Siegel + Text nebeneinander */
+.insurance-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;       /* Mobile: untereinander */
+  text-align: left;
+}
+
+/* Siegelgröße fixieren (globales img-CSS überschreiben) */
+.insurance-badge {
+  width: 120px;
+  height: 120px;
+  max-width: none;       /* wichtig gegen img{max-width:100%} */
+}
+
+/* Absatzabstände im Textblock */
+.insurance-text p {
+  margin: 0;
+}
+
+.insurance-text p + p {
+  margin-top: 8px;
+}
+
+/* Header-Layout auf kleineren Screens */
+@media (max-width: 768px) {
+  .qr {
+    max-width: 350px;
+    width: clamp(220px, 70vw, 350px);
   }
 
   header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
+    flex-wrap: wrap;
   }
 
-  h1 {
-    font-size: clamp(28px, 4vw, 44px);
-    margin: 24px 0 8px;
+  nav {
+    flex: none;
   }
+}
 
-  .sub {
-    color: var(--muted);
-    font-size: 1.1rem;
-  }
-
-  /* CTA-Button */
-  .cta {
-    display: inline-block;
-    padding: 12px 18px;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-
-  .cta:hover {
-    background: rgba(56, 189, 248, 0.1);
-    color: var(--accent);
-  }
-
-  section {
-    margin: 36px 0;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-  }
-
-  .card {
-    border: 1px solid #1f2937;
-    border-radius: 14px;
-    padding: 18px;
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  footer {
-    margin-top: 48px;
-    font-size: 0.9rem;
-    color: var(--muted);
-  }
-
-  footer a {
-    color: inherit;
-  }
-
-  /* Links allgemein */
-  a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  a:hover {
-    color: #ffffff;
-  }
-
-  /* Bilder responsiv machen */
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* Logo im Header */
-  header img,
-  header svg {
-    width: clamp(120px, 28vw, 220px);
-    height: auto;
-    flex-shrink: 0;
-  }
-
-  /* QR-Codes */
-  .qr {
-    aspect-ratio: 1 / 1;      /* erzwingt Quadrat */
-    object-fit: contain;      /* skaliert vollständig, ohne Zuschnitt */
-    max-width: 300px;         /* Deckel wie gehabt */
-    width: clamp(200px, 45vw, 300px);
-    height: auto;             /* bleibt flexibel */
-    padding: 8px;             /* etwas Abstand – verhindert Überdeckung */
-    text-align: center;
-    
-    /* Schärfe-Hinweise für Browser */
-    image-rendering: -webkit-optimize-contrast; /* Safari/iOS */
-    image-rendering: crisp-edges;               /* andere */
-  }
-
-  /* Zentrierte Inhalte (z. B. QR-Codes in Cards) */
-  .center {
+/* Sehr kleine Screens: Text im Siegelblock zentrieren */
+@media (max-width: 520px) {
+  .insurance-row {
     text-align: center;
   }
-
-  /* Header-Layout auf kleineren Screens */
-  @media (max-width: 768px) {
-    .qr {
-      max-width: 350px;
-      width: clamp(220px, 70vw, 350px);
-    }
-    
-    header {
-      flex-wrap: wrap;
-    }
-
-    nav {
-      flex: none;
-    }
-
-    /* Exali Siegel + Text nebeneinander, schön zentriert */
-    .insurance-row{
-      display:flex;
-      gap:16px;
-      align-items:center;
-      justify-content:center;
-      flex-wrap:wrap;         /* Mobile: untereinander */
-      text-align:left;
-    }
-    
-    /* Siegelgröße fixieren (globales img-CSS überschreiben) */
-    .insurance-badge{
-      width:120px;
-      height:120px;
-      max-width:none;         /* wichtig gegen img{max-width:100%} */
-    }
-    
-    /* Absatzabstände entschärfen */
-    .insurance-text p{
-      margin:0;
-    }
-    
-    .insurance-text p + p{
-      margin-top:8px;
-    }
-    
-    /* Mobile: Text zentrieren */
-    @media (max-width: 520px){
-      .insurance-row{
-        text-align:center;
-      }
-    }
-
-  }
+}
