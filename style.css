@@ -119,15 +119,16 @@ nav a:not(.cta):hover { color: var(--fg); }
   box-shadow: 0 0 24px rgba(56,189,248,0.3);
 }
 
-/* Secondary ghost variant - same outline, muted color */
+/* Secondary ghost variant - same as regular outline, just slightly muted */
 .cta-ghost {
-  border-color: var(--border);
-  color: var(--muted);
-}
-.cta-ghost:hover {
   border-color: var(--accent);
   color: var(--accent);
+  opacity: 0.75;
+}
+.cta-ghost:hover {
+  opacity: 1;
   background: var(--accent-dim);
+  box-shadow: 0 0 20px rgba(56,189,248,0.15);
 }
 
 /* ── HERO ── */
@@ -387,7 +388,68 @@ nav a:not(.cta):hover { color: var(--fg); }
   margin-bottom: 4px !important;
 }
 
-/* ── PROFILE CARDS (QR) ── */
+/* ── GRID 3 ── */
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+/* ── FRATCH CARD ── */
+.fratch-card a {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+.fratch-header { margin-bottom: 4px; }
+.fratch-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #34d399;
+  border: 1px solid rgba(52,211,153,0.3);
+  border-radius: 100px;
+  padding: 2px 10px;
+}
+.fratch-card h3 { margin: 0; color: var(--fg); font-size: 1.05rem; }
+.fratch-link {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: auto;
+}
+
+/* ── EXPERIENCE CHART ── */
+.chart-title {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.exp-chart { display: flex; flex-direction: column; gap: 14px; }
+.exp-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 46px;
+  align-items: center;
+  gap: 12px;
+}
+.exp-label { font-size: 0.83rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.exp-bar-wrap {
+  height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.exp-bar {
+  height: 100%;
+  width: var(--bar-w);
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--accent), #0ea5e9);
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.exp-years { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-align: right; font-family: 'Syne', sans-serif; }
 .profile-card a {
   display: block;
   text-decoration: none;
