@@ -357,13 +357,17 @@ nav a:not(.cta):hover { color: var(--fg); }
   display: grid;
   grid-template-columns: 1fr 340px;
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .about-card {
   font-size: 0.98rem;
   color: var(--muted);
   line-height: 1.8;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  background: var(--bg-card);
 }
 .about-card p + p { margin-top: 14px; }
 
@@ -375,6 +379,7 @@ nav a:not(.cta):hover { color: var(--fg); }
   display: flex;
   flex-direction: column;
   gap: 20px;
+  justify-content: space-between;
 }
 
 .skill-group p { margin: 0; font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
