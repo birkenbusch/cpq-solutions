@@ -85,11 +85,11 @@ nav a:not(.cta) {
 }
 nav a:not(.cta):hover { color: var(--fg); }
 
-/* ── CTA BUTTON ── */
+/* ── CTA BUTTON – one unified style ── */
 .cta {
   display: inline-block;
-  padding: 10px 20px;
-  border: 1px solid var(--accent);
+  padding: 11px 22px;
+  border: 1.5px solid var(--accent);
   color: var(--accent);
   border-radius: 8px;
   text-decoration: none;
@@ -97,6 +97,7 @@ nav a:not(.cta):hover { color: var(--fg); }
   font-size: 0.95rem;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   white-space: nowrap;
+  background: transparent;
 }
 .cta:hover {
   background: var(--accent-dim);
@@ -104,26 +105,29 @@ nav a:not(.cta):hover { color: var(--fg); }
   box-shadow: 0 0 20px rgba(56,189,248,0.15);
 }
 
+/* Primary filled variant */
 .cta-filled {
   background: var(--accent);
   color: #0f172a;
   font-weight: 700;
+  border-color: var(--accent);
 }
 .cta-filled:hover {
   background: #7dd3fc;
   color: #0f172a;
+  border-color: #7dd3fc;
   box-shadow: 0 0 24px rgba(56,189,248,0.3);
 }
 
+/* Secondary ghost variant - same outline, muted color */
 .cta-ghost {
-  background: transparent;
-  color: var(--muted);
   border-color: var(--border);
+  color: var(--muted);
 }
 .cta-ghost:hover {
-  color: var(--fg);
-  border-color: var(--muted);
-  background: rgba(255,255,255,0.03);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
 }
 
 /* ── HERO ── */
@@ -153,7 +157,7 @@ nav a:not(.cta):hover { color: var(--fg); }
 .hero-sub {
   font-size: clamp(1rem, 2vw, 1.15rem);
   color: var(--muted);
-  max-width: 620px;
+  max-width: 100%;
   margin-bottom: 36px;
   font-weight: 300;
   line-height: 1.75;
