@@ -28,7 +28,7 @@
     <!-- ── HERO ── -->
     <section class="hero">
       <p class="eyebrow">Senior CPQ-Berater &nbsp;·&nbsp; Camos CPQ Spezialist</p>
-      <h1>Camos CPQ.<br><span class="accent">Von innen verstanden.<br>Von außen umgesetzt.</span></h1>
+      <h1>Camos CPQ – <span class="accent">von innen verstanden, von außen umgesetzt.</span></h1>
       <p class="hero-sub">
         Über 15 Jahre Erfahrung in industriellen CPQ-Transformationen –
         von der Anforderungsanalyse über SAP-Integration bis zum internationalen Go-Live.
@@ -43,12 +43,12 @@
     <!-- ── STATS ── -->
     <div class="stats-bar">
       <div class="stat">
-        <span class="stat-num">15+</span>
+        <span class="stat-num" data-target="15" data-suffix="+">15+</span>
         <span class="stat-label">Jahre Camos-Erfahrung</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat">
-        <span class="stat-num">4</span>
+        <span class="stat-num" data-target="4" data-suffix="">4</span>
         <span class="stat-label">aktive Kunden</span>
       </div>
       <div class="stat-divider"></div>
@@ -58,7 +58,7 @@
       </div>
       <div class="stat-divider"></div>
       <div class="stat">
-        <span class="stat-num">3</span>
+        <span class="stat-num" data-target="3" data-suffix="">3</span>
         <span class="stat-label">Industrien</span>
       </div>
     </div>
@@ -66,7 +66,7 @@
     <!-- ── LEISTUNGEN ── -->
     <section id="leistungen">
       <h2 class="section-title">Leistungen</h2>
-      <p class="section-sub">Keine Generalistik. Kein Try-and-Error. Tiefe Camos-Expertise aus der Praxis.</p>
+      <p class="section-sub">Tiefe Camos-Expertise aus der Praxis – und ein Repertoire an bewährten Lösungen, das ich gezielt zwischen Kunden einsetze.</p>
 
       <div class="grid grid-3">
 
@@ -91,7 +91,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"/></svg>
           </div>
           <h3>Prozessoptimierung &amp; Coaching</h3>
-          <p>Analyse bestehender Angebotsprozesse, Identifikation von Verbesserungspotenzialen mit direkter Präsentation bei Entscheidungsträgern – sowie gezielter Knowledge-Transfer und Pair-Programming fürs interne Team.</p>
+          <p>Analyse bestehender Angebotsprozesse, Identifikation von Verbesserungspotenzialen mit direkter Präsentation bei Entscheidungsträgern – sowie gezielter Knowledge-Transfer und Pair-Programming fürs interne Team. Dazu: Ein wachsendes Repertoire bewährter Lösungsbausteine, die ich gezielt dort einsetze, wo sie Mehrwert schaffen.</p>
         </div>
 
       </div>
@@ -231,6 +231,38 @@
   </div><!-- /wrap -->
 
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+
+  <script>
+    // CountUp animation for stat numbers
+    function animateCount(el, target, suffix, duration) {
+      const isFloat = target % 1 !== 0;
+      const startTime = performance.now();
+      function update(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(ease * target);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseFloat(el.dataset.target);
+          const suffix = el.dataset.suffix || '';
+          animateCount(el, target, suffix, 1200);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-num[data-target]').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
