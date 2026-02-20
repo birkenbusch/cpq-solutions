@@ -23,8 +23,8 @@ body {
 
 h1, h2, h3 {
   font-family: 'Syne', system-ui, sans-serif;
-  font-weight: 700;
-  line-height: 1.15;
+  font-weight: 600;
+  line-height: 1.2;
   margin-top: 0;
 }
 
@@ -141,8 +141,8 @@ nav a:not(.cta):hover { color: var(--fg); }
 }
 
 .hero h1 {
-  font-size: clamp(36px, 5.5vw, 58px);
-  font-weight: 800;
+  font-size: clamp(32px, 4.5vw, 48px);
+  font-weight: 700;
   margin-bottom: 24px;
   color: var(--fg);
   letter-spacing: -0.02em;
@@ -189,8 +189,8 @@ nav a:not(.cta):hover { color: var(--fg); }
 
 .stat-num {
   font-family: 'Syne', system-ui, sans-serif;
-  font-size: clamp(1.6rem, 3vw, 2rem);
-  font-weight: 800;
+  font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+  font-weight: 700;
   color: var(--accent);
   line-height: 1;
 }
@@ -211,8 +211,8 @@ nav a:not(.cta):hover { color: var(--fg); }
 
 /* ── SECTION HEADERS ── */
 .section-title {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 800;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 700;
   margin-bottom: 8px;
   letter-spacing: -0.02em;
 }
@@ -417,9 +417,9 @@ nav a:not(.cta):hover { color: var(--fg); }
   text-align: center;
 }
 .contact-section h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
   margin-bottom: 12px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .contact-section p {
   color: var(--muted);
