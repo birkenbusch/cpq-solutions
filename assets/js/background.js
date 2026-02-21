@@ -1,6 +1,6 @@
 /**
  * CPQ Solutions – Hintergrund: Zahnräder
- * Einbinden: <script src="assets/js/background-zahnraeder.js"></script>
+ * Einbinden: <script src="assets/js/background_gear.js"></script>
  */
 (function () {
   const canvas = document.createElement('canvas');
