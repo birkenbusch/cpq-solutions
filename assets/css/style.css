@@ -657,17 +657,17 @@ footer a:hover { color: var(--fg); }
 
 /* ── PROFILFOTO (Über mich) ── */
 .about-photo {
-  float: left;
+  float: right;
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;
-  margin: 0 24px 16px 0;
+  margin: 0 0 16px 24px;
   border: 2.5px solid var(--accent);
   box-shadow: 0 0 0 4px rgba(56,189,248,0.12), 0 8px 32px rgba(0,0,0,0.4);
   flex-shrink: 0;
-  shape-outside: circle(50%); /* Text umfließt wirklich rund */
+  shape-outside: circle(50%);
 }
 
 /* Clearfix damit der Card nicht kollabiert */
