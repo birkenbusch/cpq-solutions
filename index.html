@@ -10,10 +10,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    /* ── Sprachumschalter ── */
+    /* ── Sprachumschalter (Desktop) ── */
     .lang-switch {
       display: flex;
-      gap: 4px;
+      gap: 3px;
       align-items: center;
       flex-shrink: 0;
     }
@@ -22,15 +22,22 @@
       border: 1px solid transparent;
       border-radius: 6px;
       cursor: pointer;
-      padding: 3px 5px;
-      font-size: 1.35rem;
-      line-height: 1;
-      opacity: 0.45;
-      transition: opacity 0.2s, border-color 0.2s, transform 0.15s;
-      font-family: inherit;
+      padding: 4px 9px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      transition: all 0.2s;
+      font-family: 'Jost', sans-serif;
     }
-    .lang-btn:hover { opacity: 0.85; transform: scale(1.1); }
-    .lang-btn.active { opacity: 1; border-color: var(--accent); transform: scale(1.1); }
+    .lang-btn:hover { color: var(--fg); border-color: var(--border); }
+    .lang-btn.active { color: var(--accent); border-color: var(--accent); }
+
+    /* Auf Mobile: Sprachumschalter + CTA-Button verstecken, nur Burger sichtbar */
+    @media (max-width: 767px) {
+      .lang-switch { display: none; }
+      .header-cta  { display: none; }
+    }
 
     /* ── Burger-Menü ── */
     .burger {
@@ -167,10 +174,10 @@
         <div class="logo">cpq-solutions.de</div>
         <div class="header-top-right">
           <div class="lang-switch">
-            <button class="lang-btn active" data-lang="de" onclick="setLang('de')" title="Deutsch">🇩🇪</button>
-            <button class="lang-btn" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
+            <button class="lang-btn active" data-lang="de" onclick="setLang('de')" title="Deutsch">DE</button>
+            <button class="lang-btn" data-lang="en" onclick="setLang('en')" title="English">EN</button>
           </div>
-          <a class="cta" data-i18n="nav.cta" data-i18n-href="nav.cta.href"
+          <a class="cta header-cta" data-i18n="nav.cta" data-i18n-href="nav.cta.href"
              href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Termin anfragen</a>
           <button class="burger" id="burgerBtn" aria-label="Menü öffnen" aria-expanded="false">
             <span></span><span></span><span></span>
