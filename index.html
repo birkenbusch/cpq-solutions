@@ -13,25 +13,24 @@
     /* ── Sprachumschalter ── */
     .lang-switch {
       display: flex;
-      gap: 2px;
+      gap: 4px;
       align-items: center;
       flex-shrink: 0;
     }
     .lang-btn {
       background: none;
       border: 1px solid transparent;
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 4px 8px;
       border-radius: 6px;
       cursor: pointer;
-      letter-spacing: 0.06em;
-      transition: all 0.2s;
-      font-family: 'Jost', sans-serif;
+      padding: 3px 5px;
+      font-size: 1.35rem;
+      line-height: 1;
+      opacity: 0.45;
+      transition: opacity 0.2s, border-color 0.2s, transform 0.15s;
+      font-family: inherit;
     }
-    .lang-btn:hover { color: var(--fg); border-color: var(--border); }
-    .lang-btn.active { color: var(--accent); border-color: var(--accent); }
+    .lang-btn:hover { opacity: 0.85; transform: scale(1.1); }
+    .lang-btn.active { opacity: 1; border-color: var(--accent); transform: scale(1.1); }
 
     /* ── Burger-Menü ── */
     .burger {
@@ -142,8 +141,8 @@
   <!-- ── Mobile Nav Overlay ── -->
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
     <div class="mobile-lang-switch">
-      <button class="mobile-lang-btn active" data-lang="de" onclick="setLang('de'); closeMobileNav()">🇩🇪 DE</button>
-      <button class="mobile-lang-btn" data-lang="en" onclick="setLang('en'); closeMobileNav()">🇬🇧 EN</button>
+      <button class="mobile-lang-btn active" data-lang="de" onclick="setLang('de'); closeMobileNav()">🇩🇪 Deutsch</button>
+      <button class="mobile-lang-btn" data-lang="en" onclick="setLang('en'); closeMobileNav()">🇬🇧 English</button>
     </div>
     <a href="#leistungen" data-i18n="nav.services" onclick="closeMobileNav()">Leistungen</a>
     <a href="#erfahrung"  data-i18n="nav.experience" onclick="closeMobileNav()">Erfahrungsprofil</a>
@@ -177,8 +176,8 @@
       </nav>
       <!-- Sprachumschalter – immer sichtbar -->
       <div class="lang-switch">
-        <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
-        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn active" data-lang="de" onclick="setLang('de')" title="Deutsch">🇩🇪</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
       </div>
       <!-- Burger (nur Mobile) -->
       <button class="burger" id="burgerBtn" aria-label="Menü öffnen" aria-expanded="false">
