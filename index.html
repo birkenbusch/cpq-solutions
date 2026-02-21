@@ -8,9 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <!-- CSS – neu unter assets/css/ -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
+  <!-- Animierter Zahnrad-Hintergrund – erstellt Canvas selbst, z-index:-1 -->
+  <script src="assets/js/background.js"></script>
 
   <div class="wrap">
 
@@ -97,8 +101,6 @@
 
       </div>
     </section>
-
-
 
     <!-- ── ERFAHRUNGSPROFIL ── -->
     <section id="erfahrung">
@@ -249,13 +251,15 @@
         <div class="card profile-card">
           <a href="https://www.linkedin.com/in/kai-birkenbusch-0292b8146/" target="_blank" rel="noopener noreferrer">
             <h3>LinkedIn</h3>
-            <p class="center"><img src="qr_LinkedIn.svg" class="qr" alt="LinkedIn QR-Code"></p>
+            <!-- QR-Code – neu unter assets/img/ -->
+            <p class="center"><img src="assets/img/qr_LinkedIn.svg" class="qr" alt="LinkedIn QR-Code"></p>
           </a>
         </div>
         <div class="card profile-card">
           <a href="https://www.xing.com/profile/Kai_Birkenbusch" target="_blank" rel="noopener noreferrer">
             <h3>XING</h3>
-            <p class="center"><img src="qr_XING.svg" class="qr" alt="XING QR-Code"></p>
+            <!-- QR-Code – neu unter assets/img/ -->
+            <p class="center"><img src="assets/img/qr_XING.svg" class="qr" alt="XING QR-Code"></p>
           </a>
         </div>
         <div class="card profile-card fratch-card">
@@ -309,12 +313,10 @@
   <script>
     // CountUp animation for stat numbers
     function animateCount(el, target, suffix, duration) {
-      const isFloat = target % 1 !== 0;
       const startTime = performance.now();
       function update(now) {
         const elapsed = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        // ease out cubic
         const ease = 1 - Math.pow(1 - progress, 3);
         const current = Math.round(ease * target);
         el.textContent = current + suffix;
@@ -342,13 +344,11 @@
         if (entry.isIntersecting) {
           entry.target.querySelectorAll('.exp-bar').forEach(bar => {
             bar.style.setProperty('--bar-w', '0%');
-            // small delay so browser registers the reset before animating
             requestAnimationFrame(() => requestAnimationFrame(() => {
               bar.style.setProperty('--bar-w', bar.dataset.width + '%');
             }));
           });
         } else {
-          // reset bars when scrolled out so they re-animate on next enter
           entry.target.querySelectorAll('.exp-bar').forEach(bar => {
             bar.style.setProperty('--bar-w', '0%');
           });
