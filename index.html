@@ -1,16 +1,39 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" id="htmlRoot">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Kai Birkenbusch – Camos CPQ Spezialist | cpq-solutions.de</title>
-  <meta name="description" content="Senior CPQ-Berater mit über 15 Jahren Camos-Erfahrung. End-to-End CPQ-Transformationen, SAP-Integration und Prozessoptimierung für den industriellen Mittelstand." />
+  <meta name="description" id="metaDesc" content="Senior CPQ-Berater mit über 15 Jahren Camos-Erfahrung. End-to-End CPQ-Transformationen, SAP-Integration und Prozessoptimierung für den industriellen Mittelstand." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    /* ── Burger-Menü ─────────────────────────────────────────────────────── */
+    /* ── Sprachumschalter ── */
+    .lang-switch {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .lang-btn {
+      background: none;
+      border: 1px solid transparent;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: all 0.2s;
+      font-family: 'Jost', sans-serif;
+    }
+    .lang-btn:hover { color: var(--fg); border-color: var(--border); }
+    .lang-btn.active { color: var(--accent); border-color: var(--accent); }
+
+    /* ── Burger-Menü ── */
     .burger {
       display: none;
       flex-direction: column;
@@ -22,7 +45,7 @@
       border: none;
       cursor: pointer;
       padding: 4px;
-      z-index: 1001;
+      flex-shrink: 0;
     }
     .burger span {
       display: block;
@@ -32,12 +55,11 @@
       border-radius: 2px;
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
-    /* Burger → X wenn offen */
     .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .burger.open span:nth-child(2) { opacity: 0; }
     .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Mobile Nav Overlay */
+    /* ── Mobile Nav Overlay ── */
     .mobile-nav {
       display: none;
       position: fixed;
@@ -47,9 +69,28 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0;
     }
     .mobile-nav.open { display: flex; }
+
+    .mobile-lang-switch {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .mobile-lang-btn {
+      background: none;
+      border: 1px solid rgba(30, 80, 140, 0.5);
+      color: rgba(150, 190, 230, 0.7);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      font-family: 'Jost', sans-serif;
+      transition: all 0.2s;
+    }
+    .mobile-lang-btn.active { color: var(--accent); border-color: var(--accent); }
 
     .mobile-nav a {
       color: #c8e8ff;
@@ -63,16 +104,8 @@
       border-bottom: 1px solid rgba(30, 80, 140, 0.25);
       transition: color 0.2s, background 0.2s;
     }
-    .mobile-nav a:first-child { border-top: 1px solid rgba(30, 80, 140, 0.25); }
+    .mobile-nav a:first-of-type { border-top: 1px solid rgba(30, 80, 140, 0.25); }
     .mobile-nav a:hover { color: #3ab0ff; background: rgba(30, 100, 200, 0.08); }
-    .mobile-nav a.cta-mobile {
-      margin-top: 24px;
-      border: 1.5px solid #3ab0ff;
-      border-radius: 6px;
-      color: #3ab0ff;
-      width: auto;
-      font-weight: 600;
-    }
     .mobile-nav .mobile-divider {
       width: 60%;
       height: 1px;
@@ -86,10 +119,19 @@
       padding: 8px 32px;
     }
     .mobile-nav a.muted-link:hover { color: rgba(150, 190, 230, 0.85); background: none; }
+    .mobile-nav a.cta-mobile {
+      margin-top: 20px;
+      border: 1.5px solid #3ab0ff;
+      border-radius: 6px;
+      color: #3ab0ff;
+      width: auto;
+      font-weight: 600;
+    }
 
     @media (max-width: 767px) {
       .burger { display: flex; }
-      header nav { display: none; } /* Desktop-Nav auf Mobile verstecken */
+      header nav { display: none; }
+      header { flex-direction: row; align-items: center; flex-wrap: nowrap; }
     }
   </style>
 </head>
@@ -99,16 +141,22 @@
 
   <!-- ── Mobile Nav Overlay ── -->
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
-    <a href="#leistungen"  onclick="closeMobileNav()">Leistungen</a>
-    <a href="#erfahrung"   onclick="closeMobileNav()">Erfahrungsprofil</a>
-    <a href="#referenzen"  onclick="closeMobileNav()">Was Kunden sagen</a>
-    <a href="#ueber-mich"  onclick="closeMobileNav()">Über mich</a>
-    <a href="#profile"     onclick="closeMobileNav()">Profile</a>
-    <a href="#kontakt"     onclick="closeMobileNav()">Projekt besprechen</a>
+    <div class="mobile-lang-switch">
+      <button class="mobile-lang-btn active" data-lang="de" onclick="setLang('de'); closeMobileNav()">🇩🇪 DE</button>
+      <button class="mobile-lang-btn" data-lang="en" onclick="setLang('en'); closeMobileNav()">🇬🇧 EN</button>
+    </div>
+    <a href="#leistungen" data-i18n="nav.services" onclick="closeMobileNav()">Leistungen</a>
+    <a href="#erfahrung"  data-i18n="nav.experience" onclick="closeMobileNav()">Erfahrungsprofil</a>
+    <a href="#referenzen" data-i18n="nav.references" onclick="closeMobileNav()">Referenzen</a>
+    <a href="#ueber-mich" data-i18n="nav.about" onclick="closeMobileNav()">Über mich</a>
+    <a href="#profile"    data-i18n="nav.profiles" onclick="closeMobileNav()">Profile</a>
+    <a href="#kontakt"    data-i18n="nav.contact" onclick="closeMobileNav()">Kontakt</a>
     <div class="mobile-divider"></div>
-    <a href="impressum.html"   class="muted-link">Impressum</a>
-    <a href="datenschutz.html" class="muted-link">Datenschutz</a>
-    <a class="cta-mobile" href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage" onclick="closeMobileNav()">Termin anfragen</a>
+    <a href="impressum.html"   class="muted-link" data-i18n="footer.imprint">Impressum</a>
+    <a href="datenschutz.html" class="muted-link" data-i18n="footer.privacy">Datenschutz</a>
+    <a class="cta-mobile" data-i18n="nav.cta" data-i18n-href="nav.cta.href"
+       href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage"
+       onclick="closeMobileNav()">Termin anfragen</a>
   </nav>
 
   <div class="wrap">
@@ -118,15 +166,21 @@
       <div class="logo">cpq-solutions.de</div>
       <!-- Desktop-Nav -->
       <nav>
-        <a href="#leistungen">Leistungen</a>
-        <a href="#erfahrung">Erfahrungsprofil</a>
-        <a href="#referenzen">Referenzen</a>
-        <a href="#ueber-mich">Über mich</a>
-        <a href="#profile">Profile</a>
-        <a href="#kontakt">Kontakt</a>
-        <a class="cta" href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Termin anfragen</a>
+        <a href="#leistungen" data-i18n="nav.services">Leistungen</a>
+        <a href="#erfahrung"  data-i18n="nav.experience">Erfahrungsprofil</a>
+        <a href="#referenzen" data-i18n="nav.references">Referenzen</a>
+        <a href="#ueber-mich" data-i18n="nav.about">Über mich</a>
+        <a href="#profile"    data-i18n="nav.profiles">Profile</a>
+        <a href="#kontakt"    data-i18n="nav.contact">Kontakt</a>
+        <a class="cta" data-i18n="nav.cta" data-i18n-href="nav.cta.href"
+           href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Termin anfragen</a>
       </nav>
-      <!-- Burger Button (nur Mobile) -->
+      <!-- Sprachumschalter – immer sichtbar -->
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <!-- Burger (nur Mobile) -->
       <button class="burger" id="burgerBtn" aria-label="Menü öffnen" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -134,16 +188,17 @@
 
     <!-- ── HERO ── -->
     <section class="hero">
-      <p class="eyebrow">Senior CPQ-Berater &nbsp;·&nbsp; Camos CPQ Spezialist</p>
-      <h1>Camos CPQ – <span class="accent">von innen verstanden, von außen umgesetzt.</span></h1>
-      <p class="hero-sub">
+      <p class="eyebrow" data-i18n="hero.eyebrow">Senior CPQ-Berater &nbsp;·&nbsp; Camos CPQ Spezialist</p>
+      <h1 data-i18n="hero.h1">Camos CPQ – <span class="accent">von innen verstanden, von außen umgesetzt.</span></h1>
+      <p class="hero-sub" data-i18n="hero.sub">
         Über 15 Jahre Erfahrung in industriellen CPQ-Transformationen:
         von der Anforderungsanalyse über SAP-Integration bis zum internationalen Go-Live.
         Für Unternehmen, die komplexe Angebotsprozesse wirklich im Griff haben wollen.
       </p>
       <div class="hero-actions">
-        <a class="cta cta-filled" href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Projekt besprechen</a>
-        <a class="cta cta-ghost" href="#leistungen">Leistungen ansehen</a>
+        <a class="cta cta-filled" data-i18n="hero.btn1" data-i18n-href="nav.cta.href"
+           href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Projekt besprechen</a>
+        <a class="cta cta-ghost" data-i18n="hero.btn2" href="#leistungen">Leistungen ansehen</a>
       </div>
     </section>
 
@@ -151,107 +206,107 @@
     <div class="stats-bar">
       <div class="stat">
         <span class="stat-num" data-target="15" data-suffix="+">15+</span>
-        <span class="stat-label">Jahre Camos-Erfahrung</span>
+        <span class="stat-label" data-i18n="stat.years.label">Jahre Camos-Erfahrung</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat">
         <span class="stat-num" data-target="4" data-suffix="">4</span>
-        <span class="stat-label">aktive Kunden</span>
+        <span class="stat-label" data-i18n="stat.clients.label">aktive Kunden</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat">
         <span class="stat-num">v6 – 13.4</span>
-        <span class="stat-label">Camos CPQ Versionen</span>
+        <span class="stat-label" data-i18n="stat.versions.label">Camos CPQ Versionen</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat">
         <span class="stat-num" data-target="3" data-suffix="">3</span>
-        <span class="stat-label">Industrien</span>
+        <span class="stat-label" data-i18n="stat.industries.label">Industrien</span>
       </div>
     </div>
 
     <!-- ── LEISTUNGEN ── -->
     <section id="leistungen">
-      <h2 class="section-title">Leistungen</h2>
-      <p class="section-sub">Tiefe Camos-Expertise aus der Praxis und ein Repertoire an bewährten Lösungen, das ich gezielt zwischen Kunden einsetze.</p>
+      <h2 class="section-title" data-i18n="services.title">Leistungen</h2>
+      <p class="section-sub" data-i18n="services.sub">Tiefe Camos-Expertise aus der Praxis und ein Repertoire an bewährten Lösungen, das ich gezielt zwischen Kunden einsetze.</p>
       <div class="grid grid-3">
         <div class="card service-card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"/></svg>
           </div>
-          <h3>CPQ-Architektur &amp; Transformation</h3>
-          <p>Neuaufbau oder Migration kompletter Angebotslösungen auf Basis von Camos CPQ von der Anforderungsanalyse über das Systemdesign bis zum internationalen Go-Live. Inklusive Customizing, Testing, Dokumentation und Übergabe.</p>
+          <h3 data-i18n="service1.title">CPQ-Architektur &amp; Transformation</h3>
+          <p data-i18n="service1.text">Neuaufbau oder Migration kompletter Angebotslösungen auf Basis von Camos CPQ von der Anforderungsanalyse über das Systemdesign bis zum internationalen Go-Live. Inklusive Customizing, Testing, Dokumentation und Übergabe.</p>
         </div>
         <div class="card service-card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/></svg>
           </div>
-          <h3>SAP-Integration</h3>
-          <p>Bidirektionale ERP-Anbindung über APICONNECT – die SAP-zertifizierte Integrationsplattform für Schnittstellen zwischen Camos CPQ und SAP ECC. Realisierte Funktionen umfassen u.a. Materialstamm-Replikation, Materialanlage und -änderung, SD-Beleganlage sowie weitere Webservice-Prozesse – sauber strukturiert, vollständig dokumentiert und wartbar aufgebaut.</p>
+          <h3 data-i18n="service2.title">SAP-Integration</h3>
+          <p data-i18n="service2.text">Bidirektionale ERP-Anbindung über APICONNECT – die SAP-zertifizierte Integrationsplattform für Schnittstellen zwischen Camos CPQ und SAP ECC. Realisierte Funktionen umfassen u.a. Materialstamm-Replikation, Materialanlage und -änderung, SD-Beleganlage sowie weitere Webservice-Prozesse – sauber strukturiert, vollständig dokumentiert und wartbar aufgebaut.</p>
         </div>
         <div class="card service-card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"/></svg>
           </div>
-          <h3>Prozessoptimierung &amp; Coaching</h3>
-          <p>Analyse bestehender Angebotsprozesse, Identifikation von Verbesserungspotenzialen mit direkter Präsentation bei Entscheidungsträgern sowie gezielter Knowledge-Transfer und Pair-Programming fürs interne Team. Dazu: Ein wachsendes Repertoire bewährter Lösungsbausteine, die ich gezielt dort einsetze, wo sie Mehrwert schaffen.</p>
+          <h3 data-i18n="service3.title">Prozessoptimierung &amp; Coaching</h3>
+          <p data-i18n="service3.text">Analyse bestehender Angebotsprozesse, Identifikation von Verbesserungspotenzialen mit direkter Präsentation bei Entscheidungsträgern sowie gezielter Knowledge-Transfer und Pair-Programming fürs interne Team. Dazu: Ein wachsendes Repertoire bewährter Lösungsbausteine, die ich gezielt dort einsetze, wo sie Mehrwert schaffen.</p>
         </div>
       </div>
     </section>
 
     <!-- ── ERFAHRUNGSPROFIL ── -->
     <section id="erfahrung">
-      <h2 class="section-title">Erfahrungsprofil</h2>
-      <p class="section-sub">Wo und wie die 15+ Jahre eingesetzt wurden.</p>
+      <h2 class="section-title" data-i18n="exp.title">Erfahrungsprofil</h2>
+      <p class="section-sub" data-i18n="exp.sub">Wo und wie die 15+ Jahre eingesetzt wurden.</p>
       <div class="industries" style="margin-bottom: 24px;">
-        <p class="industries-label">Branchen</p>
+        <p class="industries-label" data-i18n="exp.industries.label">Branchen</p>
         <div class="industries-list">
-          <span class="industry-tag">Parkraum&shy;technologie</span>
-          <span class="industry-tag">Signalling Systems</span>
-          <span class="industry-tag">Textil&shy;maschinen</span>
-          <span class="industry-tag">Klima&shy;technik</span>
-          <span class="industry-tag">Kabel&shy;hersteller</span>
-          <span class="industry-tag">ECAD-Software</span>
+          <span class="industry-tag" data-i18n="ind.parking">Parkraumtechnologie</span>
+          <span class="industry-tag" data-i18n="ind.signalling">Signalling Systems</span>
+          <span class="industry-tag" data-i18n="ind.textile">Textilmaschinen</span>
+          <span class="industry-tag" data-i18n="ind.climate">Klimatechnik</span>
+          <span class="industry-tag" data-i18n="ind.cable">Kabelhersteller</span>
+          <span class="industry-tag" data-i18n="ind.ecad">ECAD-Software</span>
         </div>
       </div>
       <div class="grid grid-2">
         <div class="card">
-          <h3 class="chart-title">Industrie</h3>
+          <h3 class="chart-title" data-i18n="chart1.title">Industrie</h3>
           <div class="exp-chart">
             <div class="exp-row">
-              <span class="exp-label">Fertigung</span>
+              <span class="exp-label" data-i18n="exp.manufacturing">Fertigung</span>
               <div class="exp-bar-wrap"><div class="exp-bar" data-width="87" style="--bar-w:0%"></div></div>
-              <span class="exp-years">14 J.</span>
+              <span class="exp-years" data-i18n="exp.years.14">14 J.</span>
             </div>
             <div class="exp-row">
-              <span class="exp-label">IT / Software</span>
+              <span class="exp-label" data-i18n="exp.it">IT / Software</span>
               <div class="exp-bar-wrap"><div class="exp-bar" data-width="25" style="--bar-w:0%"></div></div>
-              <span class="exp-years">4 J.</span>
+              <span class="exp-years" data-i18n="exp.years.4a">4 J.</span>
             </div>
           </div>
         </div>
         <div class="card">
-          <h3 class="chart-title">Geschäftsbereich</h3>
+          <h3 class="chart-title" data-i18n="chart2.title">Geschäftsbereich</h3>
           <div class="exp-chart">
             <div class="exp-row">
-              <span class="exp-label">Produktentwicklung</span>
+              <span class="exp-label" data-i18n="exp.product">Produktentwicklung</span>
               <div class="exp-bar-wrap"><div class="exp-bar" data-width="100" style="--bar-w:0%"></div></div>
-              <span class="exp-years">17,5 J.</span>
+              <span class="exp-years" data-i18n="exp.years.175">17,5 J.</span>
             </div>
             <div class="exp-row">
-              <span class="exp-label">Informationstechnologie</span>
+              <span class="exp-label" data-i18n="exp.infotech">Informationstechnologie</span>
               <div class="exp-bar-wrap"><div class="exp-bar" data-width="80" style="--bar-w:0%"></div></div>
-              <span class="exp-years">14 J.</span>
+              <span class="exp-years" data-i18n="exp.years.14b">14 J.</span>
             </div>
             <div class="exp-row">
-              <span class="exp-label">Kundendienst / Beratung</span>
+              <span class="exp-label" data-i18n="exp.service">Kundendienst / Beratung</span>
               <div class="exp-bar-wrap"><div class="exp-bar" data-width="23" style="--bar-w:0%"></div></div>
-              <span class="exp-years">4 J.</span>
+              <span class="exp-years" data-i18n="exp.years.4b">4 J.</span>
             </div>
             <div class="exp-row">
-              <span class="exp-label">Vertriebsunterstützung</span>
+              <span class="exp-label" data-i18n="exp.sales">Vertriebsunterstützung</span>
               <div class="exp-bar-wrap"><div class="exp-bar" data-width="20" style="--bar-w:0%"></div></div>
-              <span class="exp-years">3,5 J.</span>
+              <span class="exp-years" data-i18n="exp.years.35">3,5 J.</span>
             </div>
           </div>
         </div>
@@ -260,12 +315,12 @@
 
     <!-- ── REFERENZEN ── -->
     <section id="referenzen">
-      <h2 class="section-title">Was Kunden sagen</h2>
-      <p class="section-sub">Langjährige Partnerschaften statt Einmalprojekte.</p>
+      <h2 class="section-title" data-i18n="ref.title">Was Kunden sagen</h2>
+      <p class="section-sub" data-i18n="ref.sub">Langjährige Partnerschaften statt Einmalprojekte.</p>
       <div class="grid grid-2">
         <div class="card testimonial-card">
           <div class="quote-mark">"</div>
-          <p class="quote-text">Die Zusammenarbeit verläuft stets verlässlich, transparent und in hoher Qualität. Sein tiefes Verständnis für die Wechselwirkungen zwischen CPQ-Logiken und ERP-Prozessen hat zahlreiche Verbesserungen effizient möglich gemacht. Seine Expertise hat unser internes Team fachlich wie technisch gestärkt.</p>
+          <p class="quote-text" data-i18n="quote1.text">Die Zusammenarbeit verläuft stets verlässlich, transparent und in hoher Qualität. Sein tiefes Verständnis für die Wechselwirkungen zwischen CPQ-Logiken und ERP-Prozessen hat zahlreiche Verbesserungen effizient möglich gemacht. Seine Expertise hat unser internes Team fachlich wie technisch gestärkt.</p>
           <div class="quote-author">
             <div class="quote-author-info">
               <strong>T. Staschok</strong>
@@ -273,11 +328,11 @@
               <span class="muted">Scheidt &amp; Bachmann Parking Solutions GmbH</span>
             </div>
           </div>
-          <p class="quote-tenure muted">Zusammenarbeit seit 2017</p>
+          <p class="quote-tenure muted" data-i18n="quote1.tenure">Zusammenarbeit seit 2017</p>
         </div>
         <div class="card testimonial-card">
           <div class="quote-mark">"</div>
-          <p class="quote-text">Er kombiniert fundiertes Expertenwissen mit einem pragmatischen, praxisorientierten Ansatz, der stets auf den konkreten Kundennutzen fokussiert ist. Wir empfehlen ihn uneingeschränkt als Berater – sei es für die Bedarfsanalyse, die technische Umsetzung oder die Koordination externer Entwicklungsteams.</p>
+          <p class="quote-text" data-i18n="quote2.text">Er kombiniert fundiertes Expertenwissen mit einem pragmatischen, praxisorientierten Ansatz, der stets auf den konkreten Kundennutzen fokussiert ist. Wir empfehlen ihn uneingeschränkt als Berater – sei es für die Bedarfsanalyse, die technische Umsetzung oder die Koordination externer Entwicklungsteams.</p>
           <div class="quote-author">
             <div class="quote-author-info">
               <strong>F. Wagner</strong>
@@ -285,37 +340,37 @@
               <span class="muted">Weiss Klimatechnik GmbH (Schunk Group)</span>
             </div>
           </div>
-          <p class="quote-tenure muted">Zusammenarbeit seit 2024</p>
+          <p class="quote-tenure muted" data-i18n="quote2.tenure">Zusammenarbeit seit 2024</p>
         </div>
       </div>
     </section>
 
     <!-- ── ÜBER MICH ── -->
     <section id="ueber-mich">
-      <h2 class="section-title">Über mich</h2>
+      <h2 class="section-title" data-i18n="about.title">Über mich</h2>
       <div class="about-grid">
         <div class="about-card">
           <img src="assets/img/me.png" alt="Kai Birkenbusch – CPQ Consultant" class="about-photo">
-          <p>Ich bin Kai Birkenbusch – seit über 15 Jahren in der Welt industrieller CPQ-Lösungen. Meine Spezialität ist Camos CPQ bzw. camos Quotation: Ich kenne die Plattform seit Version 6.x und habe auf verschiedenen Versionen bis 13.x gearbeitet und unter anderem komplette Angebotssysteme neu aufgebaut, bestehende Lösungen auf neuere Versionen migriert und SAP-Integrationen in komplexen, international aufgestellten Industrieumgebungen realisiert.</p>
-          <p>Was mich von klassischen Entwicklern unterscheidet: Ich denke nicht in Tickets, sondern in Prozessen. Ich identifiziere Schwachstellen, hinterfrage bestehende Ansätze und präsentiere Alternativen direkt bei Entscheidungsträgern als technischer Vertrauenspartner auf Augenhöhe.</p>
-          <p>Seit Mai 2025 arbeite ich vollständig freiberuflich, remote-first – für industrielle Hersteller, die echte Camos-Expertise brauchen statt einer Agentur, die sich die Plattform erst erschließt. Deutschlandweit und international tätig.</p>
+          <p data-i18n="about.p1">Ich bin Kai Birkenbusch – seit über 15 Jahren in der Welt industrieller CPQ-Lösungen. Meine Spezialität ist Camos CPQ bzw. camos Quotation: Ich kenne die Plattform seit Version 6.x und habe auf verschiedenen Versionen bis 13.x gearbeitet und unter anderem komplette Angebotssysteme neu aufgebaut, bestehende Lösungen auf neuere Versionen migriert und SAP-Integrationen in komplexen, international aufgestellten Industrieumgebungen realisiert.</p>
+          <p data-i18n="about.p2">Was mich von klassischen Entwicklern unterscheidet: Ich denke nicht in Tickets, sondern in Prozessen. Ich identifiziere Schwachstellen, hinterfrage bestehende Ansätze und präsentiere Alternativen direkt bei Entscheidungsträgern als technischer Vertrauenspartner auf Augenhöhe.</p>
+          <p data-i18n="about.p3">Seit Mai 2025 arbeite ich vollständig freiberuflich, remote-first – für industrielle Hersteller, die echte Camos-Expertise brauchen statt einer Agentur, die sich die Plattform erst erschließt. Deutschlandweit und international tätig.</p>
         </div>
         <div class="skills-card">
           <div class="skill-group">
-            <p class="skill-label">CPQ-Plattform</p>
-            <p>Camos CPQ (camos.Develop v8+, camos.Quotation, camos.CAPP, camos.Selling)</p>
+            <p class="skill-label" data-i18n="skill1.label">CPQ-Plattform</p>
+            <p data-i18n="skill1.value">Camos CPQ (camos.Develop v8+, camos.Quotation, camos.CAPP, camos.Selling)</p>
           </div>
           <div class="skill-group">
-            <p class="skill-label">ERP-Integration</p>
-            <p>SAP ECC, APICONNECT, Webservice-Schnittstellen (SD-Belege, Materialstamm)</p>
+            <p class="skill-label" data-i18n="skill2.label">ERP-Integration</p>
+            <p data-i18n="skill2.value">SAP ECC, APICONNECT, Webservice-Schnittstellen (SD-Belege, Materialstamm)</p>
           </div>
           <div class="skill-group">
-            <p class="skill-label">CRM-Integration</p>
-            <p>Microsoft Dynamics CRM über Azure.</p>
+            <p class="skill-label" data-i18n="skill3.label">CRM-Integration</p>
+            <p data-i18n="skill3.value">Microsoft Dynamics CRM über Azure.</p>
           </div>
           <div class="skill-group">
-            <p class="skill-label">Verfügbarkeit</p>
-            <p>Remote-first &nbsp;·&nbsp; Vor-Ort deutschlandweit &nbsp;·&nbsp; International möglich</p>
+            <p class="skill-label" data-i18n="skill4.label">Verfügbarkeit</p>
+            <p data-i18n="skill4.value">Remote-first &nbsp;·&nbsp; Vor-Ort deutschlandweit &nbsp;·&nbsp; International möglich</p>
           </div>
         </div>
       </div>
@@ -323,7 +378,7 @@
 
     <!-- ── PROFILE ── -->
     <section id="profile">
-      <h2 class="section-title">Profile</h2>
+      <h2 class="section-title" data-i18n="profiles.title">Profile</h2>
       <div class="grid grid-3">
         <div class="card profile-card">
           <a href="https://www.linkedin.com/in/kai-birkenbusch-0292b8146/" target="_blank" rel="noopener noreferrer">
@@ -341,8 +396,8 @@
           <a href="https://app.fratch.io/de/profile/kai-raphael-magnus-birkenbusch" target="_blank" rel="noopener noreferrer">
             <h3>Fratch.io</h3>
             <div class="fratch-header"><span class="fratch-badge">Verified Expert</span></div>
-            <p class="muted" style="font-size:0.85rem; margin:0;">Verifiziertes Freelancer-Profil mit vollständiger Erfahrungsübersicht, Bewertungen und Buchungsoption.</p>
-            <span class="fratch-link">Profil ansehen →</span>
+            <p class="muted" style="font-size:0.85rem; margin:0;" data-i18n="fratch.text">Verifiziertes Freelancer-Profil mit vollständiger Erfahrungsübersicht, Bewertungen und Buchungsoption.</p>
+            <span class="fratch-link" data-i18n="fratch.link">Profil ansehen →</span>
           </a>
         </div>
       </div>
@@ -350,20 +405,21 @@
 
     <!-- ── KONTAKT ── -->
     <section class="contact-section" id="kontakt">
-      <h2>Projekt in Planung?</h2>
-      <p>Ob Neuprojekt, laufende Unterstützung oder ein konkretes Problem mit Ihrer Camos-Instanz – schreiben Sie mir kurz, was Sie bewegt. Ich melde mich in der Regel innerhalb eines Werktages.</p>
-      <a class="cta cta-filled" href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Jetzt Kontakt aufnehmen</a>
+      <h2 data-i18n="contact.title">Projekt in Planung?</h2>
+      <p data-i18n="contact.text">Ob Neuprojekt, laufende Unterstützung oder ein konkretes Problem mit Ihrer Camos-Instanz – schreiben Sie mir kurz, was Sie bewegt. Ich melde mich in der Regel innerhalb eines Werktages.</p>
+      <a class="cta cta-filled" data-i18n="contact.btn" data-i18n-href="contact.btn.href"
+         href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Jetzt Kontakt aufnehmen</a>
     </section>
 
     <!-- ── HAFTPFLICHT ── -->
     <section class="card" aria-label="Berufshaftpflicht">
       <div class="insurance-row">
-        <a rel="nofollow noopener noreferrer" href="https://www.exali.de/siegel/Kai-Birkenbusch_4732" target="_blank" title="Weiter zur IT-Haftpflicht von Kai Birkenbusch">
+        <a rel="nofollow noopener noreferrer" href="https://www.exali.de/siegel/Kai-Birkenbusch_4732" target="_blank">
           <img class="insurance-badge" src="https://www.exali.de/siegel/siegel_de-0_a921c915a5b400c22d67ee2c8c210c48.png" alt="IT-Berufshaftpflicht Kai Birkenbusch – exali.de" />
         </a>
         <div class="insurance-text">
-          <strong>Berufshaftpflicht</strong>
-          <p class="muted">Für meine Tätigkeit als CPQ-/IT-Dienstleister besteht eine Berufshaftpflichtversicherung. Details zur Police sind über das Siegel einsehbar.</p>
+          <strong data-i18n="insurance.title">Berufshaftpflicht</strong>
+          <p class="muted" data-i18n="insurance.text">Für meine Tätigkeit als CPQ-/IT-Dienstleister besteht eine Berufshaftpflichtversicherung. Details zur Police sind über das Siegel einsehbar.</p>
         </div>
       </div>
     </section>
@@ -371,80 +427,332 @@
     <!-- ── FOOTER ── -->
     <footer>
       <div>© <span id="y"></span> CPQ Solutions · Kai Birkenbusch</div>
-      <div><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+      <div>
+        <a href="impressum.html" data-i18n="footer.imprint">Impressum</a> ·
+        <a href="datenschutz.html" data-i18n="footer.privacy">Datenschutz</a>
+      </div>
     </footer>
 
   </div><!-- /wrap -->
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
-
   <script>
-    // ── Burger-Menü ────────────────────────────────────────────────────────
-    const burgerBtn  = document.getElementById('burgerBtn');
-    const mobileNav  = document.getElementById('mobileNav');
+  // ════════════════════════════════════════════════════════════════
+  //  ÜBERSETZUNGEN – neue Sprache? Einfach neuen Block hinzufügen!
+  // ════════════════════════════════════════════════════════════════
+  const T = {
+    de: {
+      htmlLang:  'de',
+      pageTitle: 'Kai Birkenbusch – Camos CPQ Spezialist | cpq-solutions.de',
+      metaDesc:  'Senior CPQ-Berater mit über 15 Jahren Camos-Erfahrung. End-to-End CPQ-Transformationen, SAP-Integration und Prozessoptimierung für den industriellen Mittelstand.',
+      'burger.aria': 'Menü öffnen',
 
-    burgerBtn.addEventListener('click', () => {
-      const isOpen = mobileNav.classList.toggle('open');
-      burgerBtn.classList.toggle('open', isOpen);
-      burgerBtn.setAttribute('aria-expanded', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : ''; // Scrollen sperren wenn Menü offen
-    });
+      // Nav
+      'nav.services':  'Leistungen',
+      'nav.experience':'Erfahrungsprofil',
+      'nav.references':'Referenzen',
+      'nav.about':     'Über mich',
+      'nav.profiles':  'Profile',
+      'nav.contact':   'Kontakt',
+      'nav.cta':       'Termin anfragen',
+      'nav.cta.href':  'mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage',
 
-    function closeMobileNav() {
-      mobileNav.classList.remove('open');
-      burgerBtn.classList.remove('open');
-      burgerBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+      // Hero
+      'hero.eyebrow': 'Senior CPQ-Berater &nbsp;·&nbsp; Camos CPQ Spezialist',
+      'hero.h1':      'Camos CPQ – <span class="accent">von innen verstanden, von außen umgesetzt.</span>',
+      'hero.sub':     'Über 15 Jahre Erfahrung in industriellen CPQ-Transformationen: von der Anforderungsanalyse über SAP-Integration bis zum internationalen Go-Live. Für Unternehmen, die komplexe Angebotsprozesse wirklich im Griff haben wollen.',
+      'hero.btn1':    'Projekt besprechen',
+      'hero.btn2':    'Leistungen ansehen',
+
+      // Stats
+      'stat.years.label':    'Jahre Camos-Erfahrung',
+      'stat.clients.label':  'aktive Kunden',
+      'stat.versions.label': 'Camos CPQ Versionen',
+      'stat.industries.label':'Industrien',
+
+      // Services
+      'services.title': 'Leistungen',
+      'services.sub':   'Tiefe Camos-Expertise aus der Praxis und ein Repertoire an bewährten Lösungen, das ich gezielt zwischen Kunden einsetze.',
+      'service1.title': 'CPQ-Architektur &amp; Transformation',
+      'service1.text':  'Neuaufbau oder Migration kompletter Angebotslösungen auf Basis von Camos CPQ von der Anforderungsanalyse über das Systemdesign bis zum internationalen Go-Live. Inklusive Customizing, Testing, Dokumentation und Übergabe.',
+      'service2.title': 'SAP-Integration',
+      'service2.text':  'Bidirektionale ERP-Anbindung über APICONNECT – die SAP-zertifizierte Integrationsplattform für Schnittstellen zwischen Camos CPQ und SAP ECC. Realisierte Funktionen umfassen u.a. Materialstamm-Replikation, Materialanlage und -änderung, SD-Beleganlage sowie weitere Webservice-Prozesse – sauber strukturiert, vollständig dokumentiert und wartbar aufgebaut.',
+      'service3.title': 'Prozessoptimierung &amp; Coaching',
+      'service3.text':  'Analyse bestehender Angebotsprozesse, Identifikation von Verbesserungspotenzialen mit direkter Präsentation bei Entscheidungsträgern sowie gezielter Knowledge-Transfer und Pair-Programming fürs interne Team. Dazu: Ein wachsendes Repertoire bewährter Lösungsbausteine, die ich gezielt dort einsetze, wo sie Mehrwert schaffen.',
+
+      // Experience
+      'exp.title':            'Erfahrungsprofil',
+      'exp.sub':              'Wo und wie die 15+ Jahre eingesetzt wurden.',
+      'exp.industries.label': 'Branchen',
+      'ind.parking':    'Parkraumtechnologie',
+      'ind.signalling': 'Signalling Systems',
+      'ind.textile':    'Textilmaschinen',
+      'ind.climate':    'Klimatechnik',
+      'ind.cable':      'Kabelhersteller',
+      'ind.ecad':       'ECAD-Software',
+      'chart1.title':   'Industrie',
+      'chart2.title':   'Geschäftsbereich',
+      'exp.manufacturing': 'Fertigung',
+      'exp.it':            'IT / Software',
+      'exp.product':       'Produktentwicklung',
+      'exp.infotech':      'Informationstechnologie',
+      'exp.service':       'Kundendienst / Beratung',
+      'exp.sales':         'Vertriebsunterstützung',
+      'exp.years.14':  '14 J.',
+      'exp.years.4a':  '4 J.',
+      'exp.years.175': '17,5 J.',
+      'exp.years.14b': '14 J.',
+      'exp.years.4b':  '4 J.',
+      'exp.years.35':  '3,5 J.',
+
+      // References
+      'ref.title': 'Was Kunden sagen',
+      'ref.sub':   'Langjährige Partnerschaften statt Einmalprojekte.',
+      'quote1.text':   'Die Zusammenarbeit verläuft stets verlässlich, transparent und in hoher Qualität. Sein tiefes Verständnis für die Wechselwirkungen zwischen CPQ-Logiken und ERP-Prozessen hat zahlreiche Verbesserungen effizient möglich gemacht. Seine Expertise hat unser internes Team fachlich wie technisch gestärkt.',
+      'quote1.tenure': 'Zusammenarbeit seit 2017',
+      'quote2.text':   'Er kombiniert fundiertes Expertenwissen mit einem pragmatischen, praxisorientierten Ansatz, der stets auf den konkreten Kundennutzen fokussiert ist. Wir empfehlen ihn uneingeschränkt als Berater – sei es für die Bedarfsanalyse, die technische Umsetzung oder die Koordination externer Entwicklungsteams.',
+      'quote2.tenure': 'Zusammenarbeit seit 2024',
+
+      // About
+      'about.title': 'Über mich',
+      'about.p1': 'Ich bin Kai Birkenbusch – seit über 15 Jahren in der Welt industrieller CPQ-Lösungen. Meine Spezialität ist Camos CPQ bzw. camos Quotation: Ich kenne die Plattform seit Version 6.x und habe auf verschiedenen Versionen bis 13.x gearbeitet und unter anderem komplette Angebotssysteme neu aufgebaut, bestehende Lösungen auf neuere Versionen migriert und SAP-Integrationen in komplexen, international aufgestellten Industrieumgebungen realisiert.',
+      'about.p2': 'Was mich von klassischen Entwicklern unterscheidet: Ich denke nicht in Tickets, sondern in Prozessen. Ich identifiziere Schwachstellen, hinterfrage bestehende Ansätze und präsentiere Alternativen direkt bei Entscheidungsträgern als technischer Vertrauenspartner auf Augenhöhe.',
+      'about.p3': 'Seit Mai 2025 arbeite ich vollständig freiberuflich, remote-first – für industrielle Hersteller, die echte Camos-Expertise brauchen statt einer Agentur, die sich die Plattform erst erschließt. Deutschlandweit und international tätig.',
+      'skill1.label': 'CPQ-Plattform',
+      'skill1.value': 'Camos CPQ (camos.Develop v8+, camos.Quotation, camos.CAPP, camos.Selling)',
+      'skill2.label': 'ERP-Integration',
+      'skill2.value': 'SAP ECC, APICONNECT, Webservice-Schnittstellen (SD-Belege, Materialstamm)',
+      'skill3.label': 'CRM-Integration',
+      'skill3.value': 'Microsoft Dynamics CRM über Azure.',
+      'skill4.label': 'Verfügbarkeit',
+      'skill4.value': 'Remote-first &nbsp;·&nbsp; Vor-Ort deutschlandweit &nbsp;·&nbsp; International möglich',
+
+      // Profiles
+      'profiles.title': 'Profile',
+      'fratch.text':    'Verifiziertes Freelancer-Profil mit vollständiger Erfahrungsübersicht, Bewertungen und Buchungsoption.',
+      'fratch.link':    'Profil ansehen →',
+
+      // Contact
+      'contact.title':    'Projekt in Planung?',
+      'contact.text':     'Ob Neuprojekt, laufende Unterstützung oder ein konkretes Problem mit Ihrer Camos-Instanz – schreiben Sie mir kurz, was Sie bewegt. Ich melde mich in der Regel innerhalb eines Werktages.',
+      'contact.btn':      'Jetzt Kontakt aufnehmen',
+      'contact.btn.href': 'mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage',
+
+      // Insurance
+      'insurance.title': 'Berufshaftpflicht',
+      'insurance.text':  'Für meine Tätigkeit als CPQ-/IT-Dienstleister besteht eine Berufshaftpflichtversicherung. Details zur Police sind über das Siegel einsehbar.',
+
+      // Footer
+      'footer.imprint': 'Impressum',
+      'footer.privacy': 'Datenschutz',
+    },
+
+    // ── ENGLISH ────────────────────────────────────────────────────────────
+    en: {
+      htmlLang:  'en',
+      pageTitle: 'Kai Birkenbusch – Camos CPQ Specialist | cpq-solutions.de',
+      metaDesc:  'Senior CPQ consultant with 15+ years of Camos experience. End-to-end CPQ transformations, SAP integration and process optimization for industrial manufacturers.',
+      'burger.aria': 'Open Menu',
+
+      'nav.services':  'Services',
+      'nav.experience':'Experience',
+      'nav.references':'References',
+      'nav.about':     'About Me',
+      'nav.profiles':  'Profiles',
+      'nav.contact':   'Contact',
+      'nav.cta':       'Schedule a Call',
+      'nav.cta.href':  'mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Project%20Inquiry',
+
+      'hero.eyebrow': 'Senior CPQ Consultant &nbsp;·&nbsp; Camos CPQ Specialist',
+      'hero.h1':      'Camos CPQ – <span class="accent">understood from the inside, delivered from the outside.</span>',
+      'hero.sub':     'Over 15 years of experience in industrial CPQ transformations: from requirements analysis and SAP integration through to international go-live. For companies that want to truly master complex quoting processes.',
+      'hero.btn1':    'Discuss a Project',
+      'hero.btn2':    'View Services',
+
+      'stat.years.label':    'Years of Camos Experience',
+      'stat.clients.label':  'Active Clients',
+      'stat.versions.label': 'Camos CPQ Versions',
+      'stat.industries.label':'Industries',
+
+      'services.title': 'Services',
+      'services.sub':   'Deep Camos expertise from real-world practice – and a library of proven solutions I deploy strategically across clients.',
+      'service1.title': 'CPQ Architecture &amp; Transformation',
+      'service1.text':  'New implementation or migration of complete quoting solutions based on Camos CPQ – from requirements analysis and system design through to international go-live. Including customizing, testing, documentation and handover.',
+      'service2.title': 'SAP Integration',
+      'service2.text':  'Bidirectional ERP connectivity via APICONNECT – the SAP-certified integration platform for interfaces between Camos CPQ and SAP ECC. Implemented functions include material master replication, material creation and modification, SD document creation and further web service processes – cleanly structured, fully documented and built for maintainability.',
+      'service3.title': 'Process Optimization &amp; Coaching',
+      'service3.text':  'Analysis of existing quoting processes, identification of improvement potential with direct presentation to decision-makers, as well as targeted knowledge transfer and pair programming for in-house teams. Plus: a growing library of proven solution components that I deploy where they create real value.',
+
+      'exp.title':            'Experience Profile',
+      'exp.sub':              'Where and how the 15+ years have been applied.',
+      'exp.industries.label': 'Industries',
+      'ind.parking':    'Parking Technology',
+      'ind.signalling': 'Signalling Systems',
+      'ind.textile':    'Textile Machinery',
+      'ind.climate':    'Climate Control',
+      'ind.cable':      'Cable Manufacturer',
+      'ind.ecad':       'ECAD Software',
+      'chart1.title':   'Industry',
+      'chart2.title':   'Business Area',
+      'exp.manufacturing': 'Manufacturing',
+      'exp.it':            'IT / Software',
+      'exp.product':       'Product Development',
+      'exp.infotech':      'Information Technology',
+      'exp.service':       'Customer Service / Consulting',
+      'exp.sales':         'Sales Support',
+      'exp.years.14':  '14 yrs.',
+      'exp.years.4a':  '4 yrs.',
+      'exp.years.175': '17.5 yrs.',
+      'exp.years.14b': '14 yrs.',
+      'exp.years.4b':  '4 yrs.',
+      'exp.years.35':  '3.5 yrs.',
+
+      'ref.title': 'What Clients Say',
+      'ref.sub':   'Long-term partnerships rather than one-off projects.',
+      'quote1.text':   'The collaboration is consistently reliable, transparent and of high quality. His deep understanding of the interactions between CPQ logic and ERP processes has efficiently enabled numerous improvements. His expertise has strengthened our internal team both professionally and technically.',
+      'quote1.tenure': 'Working together since 2017',
+      'quote2.text':   'He combines sound expertise with a pragmatic, practice-oriented approach that is consistently focused on concrete customer value. We recommend him without reservation as a consultant – whether for requirements analysis, technical implementation or the coordination of external development teams.',
+      'quote2.tenure': 'Working together since 2024',
+
+      'about.title': 'About Me',
+      'about.p1': 'I\'m Kai Birkenbusch – working in the world of industrial CPQ solutions for over 15 years. My speciality is Camos CPQ and camos Quotation: I\'ve been working with the platform since version 6.x across versions up to 13.x – building complete quoting systems from scratch, migrating existing solutions to newer versions, and delivering SAP integrations in complex, internationally structured industrial environments.',
+      'about.p2': 'What sets me apart from traditional developers: I don\'t think in tickets – I think in processes. I identify weaknesses, challenge existing approaches and present alternatives directly to decision-makers, as a trusted technical partner at eye level.',
+      'about.p3': 'Since May 2025 I work entirely as a freelancer, remote-first – for industrial manufacturers who need genuine Camos expertise rather than an agency that first has to get to grips with the platform. Available throughout Germany and internationally.',
+      'skill1.label': 'CPQ Platform',
+      'skill1.value': 'Camos CPQ (camos.Develop v8+, camos.Quotation, camos.CAPP, camos.Selling)',
+      'skill2.label': 'ERP Integration',
+      'skill2.value': 'SAP ECC, APICONNECT, Web Service Interfaces (SD Documents, Material Master)',
+      'skill3.label': 'CRM Integration',
+      'skill3.value': 'Microsoft Dynamics CRM via Azure.',
+      'skill4.label': 'Availability',
+      'skill4.value': 'Remote-first &nbsp;·&nbsp; On-site throughout Germany &nbsp;·&nbsp; International on request',
+
+      'profiles.title': 'Profiles',
+      'fratch.text':    'Verified freelancer profile with full experience overview, ratings and booking option.',
+      'fratch.link':    'View Profile →',
+
+      'contact.title':    'Planning a Project?',
+      'contact.text':     'Whether it\'s a new project, ongoing support or a specific issue with your Camos instance – drop me a short message about what you\'re working on. I typically respond within one business day.',
+      'contact.btn':      'Get in Touch',
+      'contact.btn.href': 'mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Project%20Inquiry',
+
+      'insurance.title': 'Professional Liability Insurance',
+      'insurance.text':  'My work as a CPQ/IT consultant is covered by professional liability insurance. Details of the policy can be accessed via the badge.',
+
+      'footer.imprint': 'Imprint',
+      'footer.privacy': 'Privacy Policy',
+
+      // Tipp: Hier einfach 'es' oder 'pt' Block ergänzen für Español / Português 😄
     }
+  };
 
-    // Schließen bei Klick außerhalb (auf das Overlay selbst)
-    mobileNav.addEventListener('click', (e) => {
-      if (e.target === mobileNav) closeMobileNav();
+  // ── Sprachumschalter ────────────────────────────────────────────
+  let currentLang = 'de';
+
+  function setLang(lang) {
+    if (!T[lang]) return;
+    const t = T[lang];
+    currentLang = lang;
+
+    // HTML lang + Titel + Meta
+    document.getElementById('htmlRoot').lang = t.htmlLang;
+    document.title = t.pageTitle;
+    document.getElementById('metaDesc').setAttribute('content', t.metaDesc);
+
+    // Alle data-i18n Elemente
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
     });
 
-    // ── CountUp animation ──────────────────────────────────────────────────
-    function animateCount(el, target, suffix, duration) {
-      const startTime = performance.now();
-      function update(now) {
-        const elapsed  = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const ease     = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(ease * target) + suffix;
-        if (progress < 1) requestAnimationFrame(update);
+    // Alle data-i18n-href Links
+    document.querySelectorAll('[data-i18n-href]').forEach(el => {
+      const key = el.getAttribute('data-i18n-href');
+      if (t[key] !== undefined) el.href = t[key];
+    });
+
+    // Burger aria-label
+    document.getElementById('burgerBtn').setAttribute('aria-label', t['burger.aria']);
+
+    // Alle Sprachbuttons aktualisieren
+    document.querySelectorAll('.lang-btn, .mobile-lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    // Präferenz speichern
+    try { localStorage.setItem('cpq-lang', lang); } catch(e) {}
+  }
+
+  // ── Burger-Menü ─────────────────────────────────────────────────
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileNav = document.getElementById('mobileNav');
+
+  burgerBtn.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    burgerBtn.classList.toggle('open', isOpen);
+    burgerBtn.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    burgerBtn.classList.remove('open');
+    burgerBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  mobileNav.addEventListener('click', e => {
+    if (e.target === mobileNav) closeMobileNav();
+  });
+
+  // ── CountUp ─────────────────────────────────────────────────────
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  function animateCount(el, target, suffix, duration) {
+    const startTime = performance.now();
+    function update(now) {
+      const elapsed  = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease     = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        animateCount(el, parseFloat(el.dataset.target), el.dataset.suffix || '', 3000);
       }
-      requestAnimationFrame(update);
-    }
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          animateCount(el, parseFloat(el.dataset.target), el.dataset.suffix || '', 3000);
-        }
-      });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('.stat-num[data-target]').forEach(el => observer.observe(el));
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-num[data-target]').forEach(el => observer.observe(el));
 
-    // ── Experience-Bars ────────────────────────────────────────────────────
-    const barObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.exp-bar').forEach(bar => {
-            bar.style.setProperty('--bar-w', '0%');
-            requestAnimationFrame(() => requestAnimationFrame(() => {
-              bar.style.setProperty('--bar-w', bar.dataset.width + '%');
-            }));
-          });
-        } else {
-          entry.target.querySelectorAll('.exp-bar').forEach(bar => {
-            bar.style.setProperty('--bar-w', '0%');
-          });
-        }
-      });
-    }, { threshold: 0.3 });
-    document.querySelectorAll('.exp-chart').forEach(el => barObserver.observe(el));
+  // ── Experience-Bars ──────────────────────────────────────────────
+  const barObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.exp-bar').forEach(bar => {
+          bar.style.setProperty('--bar-w', '0%');
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            bar.style.setProperty('--bar-w', bar.dataset.width + '%');
+          }));
+        });
+      } else {
+        entry.target.querySelectorAll('.exp-bar').forEach(bar => {
+          bar.style.setProperty('--bar-w', '0%');
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.exp-chart').forEach(el => barObserver.observe(el));
+
+  // ── Init: gespeicherte Sprache laden ────────────────────────────
+  try {
+    const saved = localStorage.getItem('cpq-lang');
+    if (saved && T[saved]) setLang(saved);
+  } catch(e) {}
+
   </script>
-
 </body>
 </html>
-
-
