@@ -162,27 +162,30 @@
 
     <!-- ── HEADER ── -->
     <header>
-      <div class="logo">cpq-solutions.de</div>
-      <!-- Desktop-Nav -->
-      <nav>
+      <!-- Zeile 1: Logo · Sprache · CTA -->
+      <div class="header-top">
+        <div class="logo">cpq-solutions.de</div>
+        <div class="header-top-right">
+          <div class="lang-switch">
+            <button class="lang-btn active" data-lang="de" onclick="setLang('de')" title="Deutsch">🇩🇪</button>
+            <button class="lang-btn" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
+          </div>
+          <a class="cta" data-i18n="nav.cta" data-i18n-href="nav.cta.href"
+             href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Termin anfragen</a>
+          <button class="burger" id="burgerBtn" aria-label="Menü öffnen" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <!-- Zeile 2: Navigation (nur Desktop) -->
+      <nav class="header-nav">
         <a href="#leistungen" data-i18n="nav.services">Leistungen</a>
         <a href="#erfahrung"  data-i18n="nav.experience">Erfahrungsprofil</a>
         <a href="#referenzen" data-i18n="nav.references">Referenzen</a>
         <a href="#ueber-mich" data-i18n="nav.about">Über mich</a>
         <a href="#profile"    data-i18n="nav.profiles">Profile</a>
         <a href="#kontakt"    data-i18n="nav.contact">Kontakt</a>
-        <a class="cta" data-i18n="nav.cta" data-i18n-href="nav.cta.href"
-           href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Termin anfragen</a>
       </nav>
-      <!-- Sprachumschalter – immer sichtbar -->
-      <div class="lang-switch">
-        <button class="lang-btn active" data-lang="de" onclick="setLang('de')" title="Deutsch">🇩🇪</button>
-        <button class="lang-btn" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
-      </div>
-      <!-- Burger (nur Mobile) -->
-      <button class="burger" id="burgerBtn" aria-label="Menü öffnen" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </header>
 
     <!-- ── HERO ── -->
