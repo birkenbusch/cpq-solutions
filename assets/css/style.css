@@ -654,3 +654,35 @@ footer a:hover { color: var(--fg); }
 @media (max-width: 520px) {
   .insurance-row { text-align: center; }
 }
+
+/* ── PROFILFOTO (Über mich) ── */
+.about-photo {
+  float: left;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  margin: 0 24px 16px 0;
+  border: 2.5px solid var(--accent);
+  box-shadow: 0 0 0 4px rgba(56,189,248,0.12), 0 8px 32px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+  shape-outside: circle(50%); /* Text umfließt wirklich rund */
+}
+
+/* Clearfix damit der Card nicht kollabiert */
+.about-card::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+@media (max-width: 640px) {
+  .about-photo {
+    float: none;
+    display: block;
+    margin: 0 auto 20px auto; /* zentriert, oberhalb Text */
+    width: 130px;
+    height: 130px;
+  }
+}
