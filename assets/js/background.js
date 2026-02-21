@@ -1,145 +1,110 @@
-<!doctype html>
-<html lang="de">
-<head>
-<meta charset="utf-8"/>
-<title>Preview – Hexagon</title>
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:#07111f; overflow:hidden; width:100vw; height:100vh; }
-canvas { display:block; position:fixed; top:0; left:0; width:100%; height:100%; }
-.label { position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
-  color:rgba(100,180,255,0.4); font:12px/1 monospace; letter-spacing:4px; text-transform:uppercase; }
-</style>
-</head>
-<body>
-<canvas id="c"></canvas>
-<div class="label">Variante 3 – Hexagon-Grid mit Wellen-Effekt</div>
-<script>
-const c = document.getElementById('c');
-const ctx = c.getContext('2d');
-let W, H;
-let hexes = [];
-let waves = [];
-const SIZE = 42; // hex radius
+/**
+ * CPQ Solutions – Hintergrund: Zahnräder
+ * Einbinden: <script src="assets/js/background-zahnraeder.js"></script>
+ */
+(function () {
+  const canvas = document.createElement('canvas');
+  Object.assign(canvas.style, {
+    position: 'fixed', top: '0', left: '0',
+    width: '100%', height: '100%',
+    zIndex: '-1', pointerEvents: 'none',
+  });
+  document.body.insertBefore(canvas, document.body.firstChild);
+  const ctx = canvas.getContext('2d');
+  let W, H, gears = [];
+  const BASE_SPEED = 0.001;
 
-function resize() {
-  W = c.width = window.innerWidth;
-  H = c.height = window.innerHeight;
-  buildGrid();
-}
+  function meshOffset(tB, angle) { return angle + Math.PI / tB; }
 
-function buildGrid() {
-  hexes = [];
-  const w = SIZE * 2;
-  const h = Math.sqrt(3) * SIZE;
-  const cols = Math.ceil(W / (w * 0.75)) + 2;
-  const rows = Math.ceil(H / h) + 2;
-
-  for (let col = -1; col < cols; col++) {
-    for (let row = -1; row < rows; row++) {
-      const x = col * w * 0.75;
-      const y = row * h + (col % 2 === 0 ? 0 : h / 2);
-      hexes.push({ x, y, brightness: 0 });
+  function buildGears() {
+    const sc = Math.min(W, H) / 900;
+    gears = [];
+    function meshGear(parent, teeth, angleDir, alpha, stroke, lineW) {
+      const r = parent.r * teeth / parent.teeth;
+      const dist = parent.r + r - Math.min(W, H) / 900;
+      return { x: parent.x + Math.cos(angleDir) * dist, y: parent.y + Math.sin(angleDir) * dist,
+        r, teeth, angle: meshOffset(teeth, angleDir), speed: -parent.speed * parent.teeth / teeth, alpha, stroke, lineW };
     }
+    const g1 = { x:W*0.78, y:H*0.76, r:190*sc, teeth:72, angle:0, speed:BASE_SPEED, alpha:0.18, stroke:'#3a8cc4', lineW:1.5 };
+    gears.push(g1);
+    const g2 = meshGear(g1, 28, -0.6, 0.22, '#3ab0ff', 1.2); gears.push(g2);
+    gears.push(meshGear(g2, 16, -1.9, 0.26, '#60c8ff', 1.0));
+    const g4 = { x:W*0.18, y:H*0.22, r:145*sc, teeth:56, angle:0.5, speed:-BASE_SPEED*0.8, alpha:0.17, stroke:'#2a7ab4', lineW:1.5 };
+    gears.push(g4);
+    const g5 = meshGear(g4, 32, 0.9, 0.21, '#3ab0ff', 1.2); gears.push(g5);
+    gears.push(meshGear(g5, 20, 2.4, 0.25, '#60c8ff', 1.0));
+    const g7 = { x:W*0.48, y:H*0.55, r:240*sc, teeth:88, angle:1.2, speed:BASE_SPEED*0.45, alpha:0.09, stroke:'#2060a0', lineW:1.2 };
+    gears.push(g7);
+    gears.push(meshGear(g7, 36, -0.4,        0.13, '#2a7ab4', 1.0));
+    gears.push(meshGear(g7, 44, Math.PI*0.7, 0.12, '#2070a8', 1.0));
+    gears.push({ x:W*0.05, y:H*0.88, r:55*sc, teeth:22, angle:0,   speed:BASE_SPEED*1.5,  alpha:0.15, stroke:'#2a7ab4', lineW:1.0 });
+    gears.push({ x:W*0.95, y:H*0.10, r:48*sc, teeth:18, angle:0.8, speed:-BASE_SPEED*1.7, alpha:0.15, stroke:'#2a7ab4', lineW:1.0 });
   }
 
-  // Spawn occasional waves
-  waves = [];
-  spawnWave();
-}
-
-function spawnWave() {
-  waves.push({
-    x: Math.random() * W,
-    y: Math.random() * H,
-    r: 0,
-    speed: 0.8 + Math.random() * 0.6,
-    maxR: Math.max(W, H) * 0.85,
-    strength: 0.6 + Math.random() * 0.4
-  });
-}
-
-function hexPath(x, y, r) {
-  ctx.beginPath();
-  for (let i = 0; i < 6; i++) {
-    const angle = (Math.PI / 3) * i - Math.PI / 6;
-    const px = x + r * Math.cos(angle);
-    const py = y + r * Math.sin(angle);
-    i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-  }
-  ctx.closePath();
-}
-
-function drawBackground() {
-  ctx.fillStyle = '#07111f';
-  ctx.fillRect(0, 0, W, H);
-}
-
-let tick = 0;
-function render() {
-  tick++;
-  drawBackground();
-
-  // Advance waves
-  waves.forEach(w => w.r += w.speed);
-  waves = waves.filter(w => w.r < w.maxR);
-  if (waves.length < 3 && tick % 180 === 0) spawnWave();
-
-  // Draw hexes
-  hexes.forEach(h => {
-    // Compute brightness from all waves
-    let bright = 0;
-    waves.forEach(w => {
-      const dx = h.x - w.x, dy = h.y - w.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      const waveFront = Math.abs(dist - w.r);
-      const waveWidth = 80;
-      if (waveFront < waveWidth) {
-        const falloff = (1 - waveFront / waveWidth);
-        bright += falloff * falloff * w.strength;
-      }
-    });
-    bright = Math.min(bright, 1);
-
-    // Fill (very subtle)
-    const fillAlpha = bright * 0.07;
-    hexPath(h.x, h.y, SIZE - 2);
-    ctx.fillStyle = `rgba(20,100,180,${fillAlpha})`;
-    ctx.fill();
-
-    // Stroke
-    const strokeAlpha = 0.06 + bright * 0.35;
-    ctx.strokeStyle = `rgba(30,140,220,${strokeAlpha})`;
-    ctx.lineWidth = bright > 0.1 ? 1.2 : 0.6;
-    ctx.stroke();
-
-    // Vertex glow dots on active hexes
-    if (bright > 0.35) {
-      for (let i = 0; i < 6; i++) {
-        const angle = (Math.PI / 3) * i - Math.PI / 6;
-        const px = h.x + (SIZE - 2) * Math.cos(angle);
-        const py = h.y + (SIZE - 2) * Math.sin(angle);
-        ctx.beginPath();
-        ctx.arc(px, py, 1.5, 0, Math.PI*2);
-        ctx.fillStyle = `rgba(80,200,255,${bright * 0.7})`;
-        ctx.fill();
-      }
+  function drawGear(g) {
+    const { x, y, r, teeth, angle, alpha, stroke, lineW } = g;
+    const toothH = r * 0.18, innerR = r * 0.62, hubR = r * 0.18;
+    const spokeCount = Math.max(4, Math.floor(teeth / 10) + 3);
+    const step = (Math.PI * 2) / teeth, tw = step * 0.38;
+    ctx.save();
+    ctx.globalAlpha = alpha; ctx.strokeStyle = stroke; ctx.fillStyle = '#07111f'; ctx.lineWidth = lineW;
+    ctx.beginPath();
+    for (let i = 0; i < teeth; i++) {
+      const a=angle+i*step, v1a=a-step*0.5+tw, t1a=a-tw, t2a=a+tw, v2a=a+step*0.5-tw;
+      i===0 ? ctx.moveTo(x+Math.cos(v1a)*r, y+Math.sin(v1a)*r) : ctx.lineTo(x+Math.cos(v1a)*r, y+Math.sin(v1a)*r);
+      ctx.lineTo(x+Math.cos(t1a)*(r+toothH), y+Math.sin(t1a)*(r+toothH));
+      ctx.lineTo(x+Math.cos(t2a)*(r+toothH), y+Math.sin(t2a)*(r+toothH));
+      ctx.lineTo(x+Math.cos(v2a)*r, y+Math.sin(v2a)*r);
     }
-  });
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.arc(x, y, innerR, 0, Math.PI*2); ctx.stroke();
+    for (let s=0; s<spokeCount; s++) {
+      const sa=angle+(Math.PI*2/spokeCount)*s;
+      ctx.beginPath(); ctx.moveTo(x+Math.cos(sa)*hubR*1.5, y+Math.sin(sa)*hubR*1.5);
+      ctx.lineTo(x+Math.cos(sa)*innerR*0.92, y+Math.sin(sa)*innerR*0.92); ctx.stroke();
+    }
+    ctx.beginPath(); ctx.arc(x, y, hubR, 0, Math.PI*2); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.arc(x, y, hubR*0.3, 0, Math.PI*2); ctx.fillStyle=stroke; ctx.globalAlpha=alpha*1.5; ctx.fill();
+    for (let i=0; i<teeth; i+=4) {
+      const ta=angle+i*(Math.PI*2/teeth);
+      const tx=x+Math.cos(ta)*(r+toothH*0.5), ty=y+Math.sin(ta)*(r+toothH*0.5);
+      const grad=ctx.createRadialGradient(tx,ty,0,tx,ty,7);
+      grad.addColorStop(0,'rgba(80,190,255,0.6)'); grad.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.beginPath(); ctx.arc(tx,ty,7,0,Math.PI*2); ctx.fillStyle=grad; ctx.globalAlpha=alpha*1.4; ctx.fill();
+      ctx.beginPath(); ctx.arc(tx,ty,1.5,0,Math.PI*2); ctx.fillStyle='#b8f0ff'; ctx.globalAlpha=alpha*2.5; ctx.fill();
+    }
+    const hg=ctx.createRadialGradient(x,y,0,x,y,hubR*1.4);
+    hg.addColorStop(0,'rgba(100,210,255,0.55)'); hg.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.beginPath(); ctx.arc(x,y,hubR*1.4,0,Math.PI*2); ctx.fillStyle=hg; ctx.globalAlpha=alpha*2; ctx.fill();
+    ctx.restore();
+  }
 
-  // Vignette
-  const vign = ctx.createRadialGradient(W/2, H/2, H*0.1, W/2, H/2, H*0.85);
-  vign.addColorStop(0, 'rgba(7,17,31,0)');
-  vign.addColorStop(1, 'rgba(3,7,15,0.75)');
-  ctx.fillStyle = vign;
-  ctx.fillRect(0, 0, W, H);
+  function drawBackground() {
+    ctx.fillStyle='#07111f'; ctx.fillRect(0,0,W,H);
+    const vign=ctx.createRadialGradient(W/2,H/2,H*0.1,W/2,H/2,H*0.85);
+    vign.addColorStop(0,'rgba(10,20,40,0)'); vign.addColorStop(1,'rgba(3,7,15,0.7)');
+    ctx.fillStyle=vign; ctx.fillRect(0,0,W,H);
+  }
 
-  requestAnimationFrame(render);
-}
+  function drawGrid() {
+    ctx.save(); ctx.strokeStyle='#1a3550'; ctx.lineWidth=0.35; ctx.globalAlpha=0.35;
+    for (let x=0;x<W;x+=50){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for (let y=0;y<H;y+=50){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    ctx.restore();
+  }
 
-window.addEventListener('resize', resize);
-resize();
-render();
-</script>
-</body>
-</html>
+  function render() {
+    drawBackground(); drawGrid();
+    for (const g of gears) { g.angle += g.speed; drawGear(g); }
+    requestAnimationFrame(render);
+  }
+
+  function resize() {
+    W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; buildGears();
+  }
+
+  window.addEventListener('resize', resize);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => { resize(); render(); });
+  } else { resize(); render(); }
+})();
