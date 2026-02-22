@@ -91,15 +91,6 @@ header {
 }
 .header-nav a:hover { color: var(--fg); }
 
-/* ── LOGO ── 
-.logo {
-  font-family: 'Syne', system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--fg);
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-} */
 /* ── LOGO MIT DYNAMISCHEN KLAMMERN ── */
 .logo {
   display: inline-flex;
