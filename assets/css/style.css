@@ -182,7 +182,27 @@ header {
 .stat-divider { width: 1px; height: 40px; background: var(--border); flex-shrink: 0; }
 
 /* ── SECTION HEADERS ── */
-.section-title { font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+/* ── SECTION HEADERS MIT ICON ── */
+.section-title { 
+  display: flex;
+  align-items: center; /* Vertikale Zentrierung zum Text */
+  gap: 12px;           /* Abstand zwischen Icon und Text */
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem); 
+  font-weight: 700; 
+  margin-bottom: 8px; 
+  letter-spacing: -0.02em; 
+}
+.section-title::before {
+  content: "";
+  display: inline-block;
+  width: 24px;  /* Größe des Icons im Header */
+  height: 24px;
+  /* Das SVG als Data-URI (optimiert für CSS) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Cpath d='M10 8H6V24H10' stroke='%2338bdf8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M22 8H26V24H22' stroke='%2338bdf8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='16' r='3' fill='white'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  flex-shrink: 0; /* Verhindert, dass das Icon gequetscht wird */
+}
 .section-sub { color: var(--muted); font-size: 1rem; margin-bottom: 36px; font-weight: 300; }
 
 /* ── GRID ── */
