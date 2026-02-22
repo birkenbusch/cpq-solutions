@@ -25,7 +25,7 @@ const T = {
     'nav.cta.href':   'mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage',
 
     'hero.eyebrow': 'Senior CPQ-Berater &nbsp;·&nbsp; Camos CPQ Spezialist',
-    'hero.h1':      'Camos CPQ – <span class="accent">von innen verstanden, von außen umgesetzt.</span>',
+    'hero.h1':      'cpq-solutions – <span class="accent">Weil das beste Werkzeug ohne Prozess nur ein teures Spielzeug ist.</span>',
     'hero.sub':     'Über 15 Jahre Erfahrung in industriellen CPQ-Transformationen: von der Anforderungsanalyse über SAP-Integration bis zum internationalen Go-Live. Für Unternehmen, die komplexe Angebotsprozesse wirklich im Griff haben wollen.',
     'hero.btn1':    'Projekt besprechen',
     'hero.btn2':    'Leistungen ansehen',
@@ -171,7 +171,7 @@ const T = {
     'nav.cta.href':   'mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Project%20Inquiry',
 
     'hero.eyebrow': 'Senior CPQ Consultant &nbsp;·&nbsp; Camos CPQ Specialist',
-    'hero.h1':      'Camos CPQ – <span class="accent">built in. Not bolted on.</span>',
+    'hero.h1':      'cpq-solutions – <span class="accent">The right tool is only as good as the process behind it.</span>',
     'hero.sub':     '15+ years of hands-on Camos CPQ expertise across industrial manufacturers: from initial requirements through SAP integration to international go-live. I help companies that need their quoting processes to work reliably – not just look good on paper.',
     'hero.btn1':    'Let\'s Talk',
     'hero.btn2':    'View Services',
