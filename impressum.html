@@ -24,7 +24,7 @@
 <body data-page="impressum">
 
   <script src="assets/js/background_hexagon.js"></script>
-  
+
   <nav class="mobile-nav" id="mobileNav">
     <div class="mobile-lang-switch">
       <button class="mobile-lang-btn active" data-lang="de" onclick="setLang('de');closeMobileNav()">DE</button>
@@ -39,7 +39,9 @@
     <a href="index.html#kontakt"    data-i18n="nav.contact">Kontakt</a>
     <div class="mobile-divider"></div>
     <a href="datenschutz.html" class="muted-link" data-i18n="footer.privacy">Datenschutz</a>
-    <a class="cta-mobile" data-i18n="footer.cta" data-i18n-href="footer.cta.href" href="/cdn-cgi/l/email-protection#bdd6dcd490dfd4cfd6d8d3dfc8ceded5fddecdcc90ced2d1c8c9d4d2d3ce93d9d882cec8dfd7d8dec980feedec988f8dedcfd2d7d8d6c9dcd3dbcfdcdad8" onclick="closeMobileNav()">Termin anfragen</a>
+    <a class="cta-mobile" data-i18n="footer.cta" data-i18n-href="footer.cta.href"
+       href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage"
+       onclick="closeMobileNav()">Termin anfragen</a>
   </nav>
 
   <div class="wrap">
@@ -51,7 +53,8 @@
             <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
             <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
           </div>
-          <a class="cta header-cta" data-i18n="footer.cta" data-i18n-href="footer.cta.href" href="/cdn-cgi/l/email-protection#e289838bcf808b9089878c809791818aa2819293cf918d8e97968b8d8c91cc8687dd91978088878196dfa1b2b3c7d0d2b2908d88878996838c8490838587">Termin anfragen</a>
+          <a class="cta header-cta" data-i18n="footer.cta" data-i18n-href="footer.cta.href"
+             href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Termin anfragen</a>
           <button class="burger" id="burgerBtn" aria-label="Menü öffnen" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -70,21 +73,25 @@
 
     <main style="margin-top:40px">
       <h1 data-i18n="imp.h1">Impressum</h1>
+
       <section class="card">
         <p><strong data-i18n="imp.section1.heading">Diensteanbieter / Verantwortlich i.S.d. § 5 DDG</strong></p>
         <p data-i18n="imp.section1.address">Kai Birkenbusch (Einzelunternehmen)<br>c/o Online-Impressum.de #4879<br>Europaring 60<br>53757 Sankt Augustin, Deutschland</p>
-        <p data-i18n="imp.section1.contact"><strong>Kontakt</strong><br>E-Mail: <a href="/cdn-cgi/l/email-protection#bfd4ded692ddd6cdd4dad1ddcaccdcd7ffdccfce92ccd0d3cacbd6d0d1cc91dbda"><span class="__cf_email__" data-cfemail="9ef5fff7b3fcf7ecf5fbf0fcebedfdf6defdeeefb3edf1f2ebeaf7f1f0edb0fafb">[email&#160;protected]</span></a></p>
+        <p data-i18n="imp.section1.contact"><strong>Kontakt</strong><br>E-Mail: <a href="mailto:kai-birkenbusch@cpq-solutions.de">kai-birkenbusch@cpq-solutions.de</a></p>
         <p data-i18n="imp.section1.resp"><strong>Verantwortlich für den Inhalt</strong> (§ 18 Abs. 2 MStV):<br>Kai Birkenbusch, Anschrift wie oben.</p>
         <p data-i18n="imp.section1.hosting"><strong>Hosting</strong>: GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA (GitHub Pages/CDN).</p>
       </section>
+
       <section>
         <h2 class="section-title" data-i18n="imp.liability.h2">Haftung für Inhalte</h2>
         <p data-i18n="imp.liability.text">Als Diensteanbieter sind wir gemäß § 5 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Für fremde Inhalte (z. B. verlinkte Seiten) besteht keine Haftung; hierfür sind ausschließlich deren Betreiber verantwortlich.</p>
       </section>
+
       <section>
         <h2 class="section-title" data-i18n="imp.links.h2">Externe Links</h2>
         <p data-i18n="imp.links.text">Diese Website enthält Verlinkungen zu externen Profilen (z. B. LinkedIn, XING). Auf die Inhalte und Datenverarbeitung dieser Anbieter haben wir keinen Einfluss. Bitte beachten Sie die jeweiligen Datenschutzhinweise der Drittanbieter.</p>
       </section>
+
       <section>
         <h2 class="section-title" data-i18n="imp.copyright.h2">Urheberrecht</h2>
         <p data-i18n="imp.copyright.text">Die Inhalte dieser Website (Texte, Layout, eigene Bilder) unterliegen dem Urheberrecht. Jede Verwertung bedarf der vorherigen Zustimmung, soweit sie nicht gesetzlich gestattet ist.</p>
@@ -95,10 +102,21 @@
         <p data-i18n="imp.trademark.text1"></p>
         <p data-i18n="imp.trademark.text2"></p>
       </section>
+
       <p class="muted" data-i18n="imp.legal.note">Rechtsgrundlagen: § 5 Digitale-Dienste-Gesetz (DDG); ggf. § 18 MStV.</p>
     </main>
 
     <footer>
       <div>© <span id="y"></span> cpq-solutions.de · Kai Birkenbusch</div>
       <div>
-        <a
+        <a href="impressum.html" data-i18n="footer.imprint">Impressum</a> ·
+        <a href="datenschutz.html" data-i18n="footer.privacy">Datenschutz</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/lang.js"></script>
+</body>
+</html>
