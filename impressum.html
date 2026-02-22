@@ -1,118 +1,71 @@
-<!doctype html>
-<html lang="de" id="htmlRoot">
+<!DOCTYPE html>
+<html lang="de">
 <head>
-  <meta charset="utf-8">
-  <link rel="icon" type="image/svg+xml" href="assets/img/emogicon.svg">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Impressum – CPQ Solutions</title>
-  <meta name="description" id="metaDesc" content="Impressum von CPQ Solutions – Kai Birkenbusch">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    .lang-switch{display:flex;gap:3px;align-items:center;flex-shrink:0}
-    .lang-btn{background:none;border:1px solid transparent;border-radius:6px;cursor:pointer;padding:4px 9px;font-size:.75rem;font-weight:700;letter-spacing:.06em;color:var(--muted);transition:all .2s;font-family:'Jost',sans-serif}
-    .lang-btn:hover{color:var(--fg);border-color:var(--border)}
-    .lang-btn.active{color:var(--accent);border-color:var(--accent)}
-    .mobile-lang-switch{display:flex;gap:12px;margin-bottom:12px}
-    .mobile-lang-btn{background:none;border:1px solid rgba(56,189,248,.3);border-radius:6px;color:#c8e8ff;padding:8px 20px;font-size:1rem;font-weight:600;cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s}
-    .mobile-lang-btn.active{color:var(--accent);border-color:var(--accent)}
-    @media(max-width:767px){.lang-switch{display:none}.header-cta{display:none}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum - cpq-solutions</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body data-page="impressum">
+<body>
+    <nav>
+        <a href="index.html" data-i18n="nav.home">Startseite</a>
+    </nav>
 
-  <script src="assets/js/background_hexagon.js"></script>
-  
-  <nav class="mobile-nav" id="mobileNav">
-    <div class="mobile-lang-switch">
-      <button class="mobile-lang-btn active" data-lang="de" onclick="setLang('de');closeMobileNav()">DE</button>
-      <button class="mobile-lang-btn" data-lang="en" onclick="setLang('en');closeMobileNav()">EN</button>
-    </div>
-    <a href="index.html" data-i18n="imp.nav.back">← Startseite</a>
-    <a href="index.html#leistungen" data-i18n="nav.services">Leistungen</a>
-    <a href="index.html#erfahrung"  data-i18n="nav.experience">Erfahrungsprofil</a>
-    <a href="index.html#referenzen" data-i18n="nav.references">Referenzen</a>
-    <a href="index.html#ueber-mich" data-i18n="nav.about">Über mich</a>
-    <a href="index.html#profile"    data-i18n="nav.profiles">Profile</a>
-    <a href="index.html#kontakt"    data-i18n="nav.contact">Kontakt</a>
-    <div class="mobile-divider"></div>
-    <a href="datenschutz.html" class="muted-link" data-i18n="footer.privacy">Datenschutz</a>
-    <a class="cta-mobile" data-i18n="footer.cta" data-i18n-href="footer.cta.href"
-       href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage"
-       onclick="closeMobileNav()">Termin anfragen</a>
-  </nav>
+    <main class="legal-content">
+        <h1 data-i18n="imprint.title">Impressum</h1>
+        
+        <section>
+            <h2 data-i18n="imprint.contact_title">Angaben gemäß § 5 TMG</h2>
+            <p>
+                Kai Birkenbusch<br>
+                cpq-solutions<br>
+                [Deine Straße Hausnummer]<br>
+                [PLZ Ort]
+            </p>
+        </section>
 
-  <div class="wrap">
-    <header>
-      <div class="header-top">
-        <div class="logo">cpq-solutions.de</div>
-        <div class="header-top-right">
-          <div class="lang-switch">
-            <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
-            <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-          </div>
-          <a class="cta header-cta" data-i18n="footer.cta" data-i18n-href="footer.cta.href"
-             href="mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage">Termin anfragen</a>
-          <button class="burger" id="burgerBtn" aria-label="Menü öffnen" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
-      <nav class="header-nav">
-        <a href="index.html" data-i18n="imp.nav.back">← Startseite</a>
-        <a href="index.html#leistungen" data-i18n="nav.services">Leistungen</a>
-        <a href="index.html#erfahrung"  data-i18n="nav.experience">Erfahrungsprofil</a>
-        <a href="index.html#referenzen" data-i18n="nav.references">Referenzen</a>
-        <a href="index.html#ueber-mich" data-i18n="nav.about">Über mich</a>
-        <a href="index.html#profile"    data-i18n="nav.profiles">Profile</a>
-        <a href="index.html#kontakt"    data-i18n="nav.contact">Kontakt</a>
-      </nav>
-    </header>
+        <section>
+            <h2 data-i18n="imprint.reach_title">Kontakt</h2>
+            <p>
+                Telefon: [Deine Telefonnummer]<br>
+                E-Mail: <a href="mailto:kai@birkenbusch.de">kai@birkenbusch.de</a>
+            </p>
+        </section>
 
-    <main style="margin-top:40px">
-      <h1 data-i18n="imp.h1">Impressum</h1>
-      <section class="card">
-        <p><strong data-i18n="imp.section1.heading">Diensteanbieter / Verantwortlich i.S.d. § 5 DDG</strong></p>
-        <p data-i18n="imp.section1.address">Kai Birkenbusch (Einzelunternehmen)<br>c/o Online-Impressum.de #4879<br>Europaring 60<br>53757 Sankt Augustin, Deutschland</p>
-        <p data-i18n="imp.section1.contact"><strong>Kontakt</strong><br>E-Mail: <a href="mailto:kai-birkenbusch@cpq-solutions.de">kai-birkenbusch@cpq-solutions.de</a></p>
-        <p data-i18n="imp.section1.resp"><strong>Verantwortlich für den Inhalt</strong> (§ 18 Abs. 2 MStV):<br>Kai Birkenbusch, Anschrift wie oben.</p>
-        <p data-i18n="imp.section1.hosting"><strong>Hosting</strong>: GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA (GitHub Pages/CDN).</p>
-      </section>
-      <section>
-        <h2 data-i18n="imp.liability.h2">Haftung für Inhalte</h2>
-        <p data-i18n="imp.liability.text">Als Diensteanbieter sind wir gemäß § 5 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Für fremde Inhalte (z. B. verlinkte Seiten) besteht keine Haftung; hierfür sind ausschließlich deren Betreiber verantwortlich.</p>
-      </section>
-      <section>
-        <h2 data-i18n="imp.links.h2">Externe Links</h2>
-        <p data-i18n="imp.links.text">Diese Website enthält Verlinkungen zu externen Profilen (z. B. LinkedIn, XING). Auf die Inhalte und Datenverarbeitung dieser Anbieter haben wir keinen Einfluss. Bitte beachten Sie die jeweiligen Datenschutzhinweise der Drittanbieter.</p>
-      </section>
-      <section>
-        <h2 data-i18n="imp.copyright.h2">Urheberrecht</h2>
-        <p data-i18n="imp.copyright.text">Die Inhalte dieser Website (Texte, Layout, eigene Bilder) unterliegen dem Urheberrecht. Jede Verwertung bedarf der vorherigen Zustimmung, soweit sie nicht gesetzlich gestattet ist.</p>
-      </section>
-      <p class="muted" data-i18n="imp.legal.note">Rechtsgrundlagen: § 5 Digitale-Dienste-Gesetz (DDG); ggf. § 18 MStV.</p>
+        <section>
+            <h2 data-i18n="imprint.trademark_title">Markenrechtliche Hinweise</h2>
+            <p data-i18n="imprint.trademark_text_1">
+                Die Bezeichnung „camos“ sowie zugehörige Logos sind eingetragene Marken der 
+                <strong>camos Software und Beratung GmbH</strong>. Die Verwendung dieser Begriffe auf 
+                cpq-solutions.de erfolgt ausschließlich zu beschreibenden Zwecken, um die Software-Plattform 
+                zu identifizieren, auf der die angebotenen Dienstleistungen basieren. 
+            </p>
+            <p data-i18n="imprint.trademark_text_2">
+                Kai Birkenbusch (cpq-solutions) steht in keiner wirtschaftlichen, rechtlichen oder 
+                gesellschaftsrechtlichen Verbindung zur camos Software und Beratung GmbH.
+            </p>
+        </section>
+
+        <section>
+            <h2 data-i18n="imprint.disclaimer_title">Haftungsausschluss</h2>
+            <p data-i18n="imprint.disclaimer_text">
+                Trotz sorgfältiger inhaltlicher Kontrolle übernehme ich keine Haftung für die Inhalte externer Links. 
+                Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+            </p>
+        </section>
     </main>
 
-    <footer style="text-align: center; padding: 20px; font-size: 0.9em; color: #666;">
-      <div>
-        © <span id="y"></span> cpq-solutions.de · Kai Birkenbusch
-      </div>
-      <div style="margin: 10px 0; font-size: 0.85em; line-height: 1.4;">
-        <em>Hinweis: cpq-solutions ist ein unabhängiges Beratungsangebot. camos® ist eine eingetragene Marke der camos Software und Beratung GmbH. Es besteht keine gesellschaftsrechtliche Verbindung.</em>
-      </div>
-      <div>
-        <a href="index.html">Startseite</a> ·
-        <a href="impressum.html" data-i18n="footer.imprint">Impressum</a> ·
-        <a href="datenschutz.html" data-i18n="footer.privacy">Datenschutz</a>
-      </div>
+    <footer>
+        <div>© <span id="y"></span> cpq-solutions.de · Kai Birkenbusch</div>
+        <div>
+            <a href="index.html" data-i18n="nav.home">Startseite</a> ·
+            <a href="datenschutz.html" data-i18n="footer.privacy">Datenschutz</a>
+        </div>
     </footer>
-  </div>
 
-  <script src="assets/js/i18n.js"></script>
-  <script src="assets/js/lang.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
-
-
