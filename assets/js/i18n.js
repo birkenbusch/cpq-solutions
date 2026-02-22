@@ -101,10 +101,10 @@ const T = {
     'insurance.text':  'Für meine Tätigkeit als CPQ-/IT-Dienstleister besteht eine Berufshaftpflichtversicherung. Details zur Police sind über das Siegel einsehbar.',
 
     // ── impressum.html ───────────────────────────────────────────────────
-    'imp.page.title':  'Impressum – CPQ Solutions',
-    'imp.page.meta':   'Impressum von CPQ Solutions – Kai Birkenbusch',
-    'imp.h1':          'Impressum',
-    'imp.nav.back':    '← Startseite',
+    'imp.page.title':        'Impressum – CPQ Solutions',
+    'imp.page.meta':         'Impressum von CPQ Solutions – Kai Birkenbusch',
+    'imp.h1':                'Impressum',
+    'imp.nav.back':          '← Startseite',
     'imp.section1.heading':  'Diensteanbieter / Verantwortlich i.S.d. § 5 DDG',
     'imp.section1.address':  'Kai Birkenbusch (Einzelunternehmen)<br>c/o Online-Impressum.de #4879<br>Europaring 60<br>53757 Sankt Augustin, Deutschland',
     'imp.section1.contact':  '<strong>Kontakt</strong><br>E-Mail: <a href="mailto:kai-birkenbusch@cpq-solutions.de">kai-birkenbusch@cpq-solutions.de</a>',
@@ -116,16 +116,9 @@ const T = {
     'imp.links.text':        'Diese Website enthält Verlinkungen zu externen Profilen (z. B. LinkedIn, XING). Auf die Inhalte und Datenverarbeitung dieser Anbieter haben wir keinen Einfluss. Bitte beachten Sie die jeweiligen Datenschutzhinweise der Drittanbieter.',
     'imp.copyright.h2':      'Urheberrecht',
     'imp.copyright.text':    'Die Inhalte dieser Website (Texte, Layout, eigene Bilder) unterliegen dem Urheberrecht. Jede Verwertung bedarf der vorherigen Zustimmung, soweit sie nicht gesetzlich gestattet ist.',
-    'imp.legal.note':        'Rechtsgrundlagen: § 5 Digitale-Dienste-Gesetz (DDG); ggf. § 18 MStV.',
     'imp.trademark.h2':      'Markenrechtliche Hinweise',
     'imp.trademark.text1':   'Die Bezeichnung „camos“ sowie zugehörige Logos sind eingetragene Marken der <strong>camos Software und Beratung GmbH</strong>. Die Verwendung dieser Begriffe auf cpq-solutions.de erfolgt ausschließlich zu beschreibenden Zwecken, um die Software-Plattform zu identifizieren, auf der die angebotenen Dienstleistungen basieren.',
     'imp.trademark.text2':   'Kai Birkenbusch (cpq-solutions) steht in keiner wirtschaftlichen, rechtlichen oder gesellschaftsrechtlichen Verbindung zur camos Software und Beratung GmbH.',
-    'imp.liability.h2':      'Haftung für Inhalte',
-    'imp.liability.text':    'Als Diensteanbieter sind wir gemäß § 5 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Für fremde Inhalte (z. B. verlinkte Seiten) besteht keine Haftung; hierfür sind ausschließlich deren Betreiber verantwortlich.',
-    'imp.links.h2':          'Externe Links',
-    'imp.links.text':        'Diese Website enthält Verlinkungen zu externen Profilen (z. B. LinkedIn, XING). Auf die Inhalte und Datenverarbeitung dieser Anbieter haben wir keinen Einfluss. Bitte beachten Sie die jeweiligen Datenschutzhinweise der Drittanbieter.',
-    'imp.copyright.h2':      'Urheberrecht',
-    'imp.copyright.text':    'Die Inhalte dieser Website (Texte, Layout, eigene Bilder) unterliegen dem Urheberrecht. Jede Verwertung bedarf der vorherigen Zustimmung, soweit sie nicht gesetzlich gestattet ist.',
     'imp.legal.note':        'Rechtsgrundlagen: § 5 Digitale-Dienste-Gesetz (DDG); ggf. § 18 MStV.',
 
     // ── datenschutz.html ─────────────────────────────────────────────────
@@ -261,10 +254,10 @@ const T = {
     'insurance.text':  'My consulting work is covered by professional liability insurance. Full policy details are accessible via the badge.',
 
     // ── impressum.html ───────────────────────────────────────────────────
-    'imp.page.title':  'Imprint – CPQ Solutions',
-    'imp.page.meta':   'Legal notice (Impressum) for CPQ Solutions – Kai Birkenbusch',
-    'imp.h1':          'Imprint',
-    'imp.nav.back':    '← Home',
+    'imp.page.title':        'Imprint – CPQ Solutions',
+    'imp.page.meta':         'Legal notice (Impressum) for CPQ Solutions – Kai Birkenbusch',
+    'imp.h1':                'Imprint',
+    'imp.nav.back':          '← Home',
     'imp.section1.heading':  'Service Provider / Responsible Party pursuant to § 5 DDG',
     'imp.section1.address':  'Kai Birkenbusch (sole trader)<br>c/o Online-Impressum.de #4879<br>Europaring 60<br>53757 Sankt Augustin, Germany',
     'imp.section1.contact':  '<strong>Contact</strong><br>Email: <a href="mailto:kai-birkenbusch@cpq-solutions.de">kai-birkenbusch@cpq-solutions.de</a>',
@@ -276,17 +269,9 @@ const T = {
     'imp.links.text':        'This website contains links to external profiles (e.g. LinkedIn, XING). We have no influence over the content or data processing of these providers. Please refer to the respective third-party privacy notices.',
     'imp.copyright.h2':      'Copyright',
     'imp.copyright.text':    'The content of this website (texts, layout, original images) is protected by copyright. Any use requires prior consent unless permitted by law.',
-    'imp.legal.note':        'Legal basis: § 5 Digital Services Act (DDG); where applicable § 18 MStV.',
     'imp.trademark.h2':      'Trademark Information',
     'imp.trademark.text1':   'The term "camos" and related logos are registered trademarks of <strong>camos Software und Beratung GmbH</strong>. Use of these terms on cpq-solutions.de is for descriptive purposes only, to identify the software platform on which the services offered are based.',
     'imp.trademark.text2':   'Kai Birkenbusch (cpq-solutions) is not legally or corporately affiliated with camos Software und Beratung GmbH.',
-
-    'imp.liability.h2':      'Liability for Content',
-    'imp.liability.text':    'As a service provider, we are responsible for our own content on these pages in accordance with general law pursuant to § 5 DDG. We accept no liability for external content (e.g. linked pages); responsibility for such content lies solely with the respective operators.',
-    'imp.links.h2':          'External Links',
-    'imp.links.text':        'This website contains links to external profiles (e.g. LinkedIn, XING). We have no influence over the content or data processing of these providers. Please refer to the respective third-party privacy notices.',
-    'imp.copyright.h2':      'Copyright',
-    'imp.copyright.text':    'The content of this website (texts, layout, original images) is protected by copyright. Any use requires prior consent unless permitted by law.',
     'imp.legal.note':        'Legal basis: § 5 Digital Services Act (DDG); where applicable § 18 MStV.',
 
     // ── datenschutz.html ─────────────────────────────────────────────────
