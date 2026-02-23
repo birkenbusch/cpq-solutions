@@ -12,8 +12,8 @@ const T = {
     'burger.aria': 'Menü öffnen',
 
     // ── index.html ──────────────────────────────────────────────────────
-    'page.title':   'Kai Birkenbusch – Camos CPQ Spezialist | cpq-solutions.de',
-    'page.meta':    'Senior CPQ-Berater mit über 15 Jahren Camos-Erfahrung. End-to-End CPQ-Transformationen, SAP-Integration und Prozessoptimierung für den industriellen Mittelstand.',
+    'page.title':   'Kai Birkenbusch – camos® CPQ Spezialist | cpq-solutions.de',
+    'page.meta':    'Senior CPQ-Berater mit über 15 Jahren camos-Erfahrung. End-to-End CPQ-Transformationen, SAP-Integration und Prozessoptimierung für den industriellen Mittelstand.',
 
     'nav.services':   'Leistungen',
     'nav.experience': 'Erfahrungsprofil',
@@ -24,23 +24,23 @@ const T = {
     'nav.cta':        'Termin anfragen',
     'nav.cta.href':   'mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage',
 
-    'hero.eyebrow': 'Senior CPQ-Berater &nbsp;·&nbsp; Camos CPQ Spezialist',
-    'hero.h1':      'cpq-solutions – <span class="accent">Weil das beste Werkzeug ohne Prozess nur ein teures Spielzeug ist.</span>',
-    'hero.sub':     'Über 15 Jahre Erfahrung in industriellen CPQ-Transformationen: von der Anforderungsanalyse über SAP-Integration bis zum internationalen Go-Live. Für Unternehmen, die komplexe Angebotsprozesse wirklich im Griff haben wollen.',
+    'hero.eyebrow': 'Senior CPQ-Berater &nbsp;·&nbsp; camos® CPQ Spezialist',
+    'hero.h1':      'cpq-solutions.de – <span class="accent">Weil das beste Werkzeug ohne Prozess nur ein teures Spielzeug ist.</span>',
+    'hero.sub':     'Über 15 Jahre Erfahrung in industriellen CPQ-Transformationen: von der Anforderungsanalyse über Integration von ERP, CRM und weiteren Systemen bis zum internationalen Go-Live. Für Unternehmen, die komplexe Angebotsprozesse wirklich im Griff haben wollen.',
     'hero.btn1':    'Projekt besprechen',
     'hero.btn2':    'Leistungen ansehen',
 
-    'stat.years.label':     'Jahre Camos-Erfahrung',
+    'stat.years.label':     'Jahre camos®-Erfahrung',
     'stat.clients.label':   'aktive Kunden',
-    'stat.versions.label':  'Camos CPQ Versionen',
+    'stat.versions.label':  'camos CPQ Versionen',
     'stat.industries.label':'Industrien',
 
     'services.title':  'Leistungen',
-    'services.sub':    'Tiefe Camos-Expertise aus der Praxis und ein Repertoire an bewährten Lösungen, das ich gezielt zwischen Kunden einsetze.',
+    'services.sub':    'Tiefe camos-Expertise aus der Praxis und ein Repertoire an bewährten Lösungen, das ich gezielt zwischen Kunden einsetze.',
     'service1.title':  'CPQ-Architektur &amp; Transformation',
-    'service1.text':   'Neuaufbau oder Migration kompletter Angebotslösungen auf Basis von Camos CPQ von der Anforderungsanalyse über das Systemdesign bis zum internationalen Go-Live. Inklusive Customizing, Testing, Dokumentation und Übergabe.',
+    'service1.text':   'Neuaufbau oder Migration kompletter Angebotslösungen auf Basis von camos CPQ von der Anforderungsanalyse über das Systemdesign bis zum internationalen Go-Live. Inklusive Customizing, Testing, Dokumentation und Übergabe.',
     'service2.title':  'SAP-Integration',
-    'service2.text':   'Bidirektionale ERP-Anbindung über APICONNECT – die SAP-zertifizierte Integrationsplattform für Schnittstellen zwischen Camos CPQ und SAP ECC. Realisierte Funktionen umfassen u.a. Materialstamm-Replikation, Materialanlage und -änderung, SD-Beleganlage sowie weitere Webservice-Prozesse – sauber strukturiert, vollständig dokumentiert und wartbar aufgebaut.',
+    'service2.text':   'Bidirektionale ERP-Anbindung über APICONNECT – die SAP-zertifizierte Integrationsplattform für Schnittstellen zwischen camos® CPQ und SAP ECC. Realisierte Funktionen umfassen u.a. Materialstamm-Replikation, Materialanlage und -änderung, SD-Beleganlage sowie weitere Webservice-Prozesse – sauber strukturiert, vollständig dokumentiert und wartbar aufgebaut.',
     'service3.title':  'Prozessoptimierung &amp; Coaching',
     'service3.text':   'Analyse bestehender Angebotsprozesse, Identifikation von Verbesserungspotenzialen mit direkter Präsentation bei Entscheidungsträgern sowie gezielter Knowledge-Transfer und Pair-Programming fürs interne Team. Dazu: Ein wachsendes Repertoire bewährter Lösungsbausteine, die ich gezielt dort einsetze, wo sie Mehrwert schaffen.',
 
@@ -76,15 +76,17 @@ const T = {
     'quote2.tenure': 'Zusammenarbeit seit 2024',
 
     'about.title': 'Über mich',
-    'about.p1':    'Ich bin Kai Birkenbusch – seit über 15 Jahren in der Welt industrieller CPQ-Lösungen. Meine Spezialität ist Camos CPQ bzw. camos Quotation: Ich kenne die Plattform seit Version 6.x und habe auf verschiedenen Versionen bis 13.x gearbeitet und unter anderem komplette Angebotssysteme neu aufgebaut, bestehende Lösungen auf neuere Versionen migriert und SAP-Integrationen in komplexen, international aufgestellten Industrieumgebungen realisiert.',
+    'about.p1':    'Ich bin Kai Birkenbusch – seit über 15 Jahren in der Welt industrieller CPQ-Lösungen. Meine Spezialität ist camos® CPQ bzw. camos.Quotation: Ich kenne das Produkt seit Version 6.x und habe auf verschiedenen Versionen bis 13.x gearbeitet und unter anderem komplette Angebotssysteme neu aufgebaut, bestehende Lösungen auf neuere Versionen migriert und SAP-Integrationen in komplexen, international aufgestellten Industrieumgebungen realisiert.',
     'about.p2':    'Was mich von klassischen Entwicklern unterscheidet: Ich denke nicht in Tickets, sondern in Prozessen. Ich identifiziere Schwachstellen, hinterfrage bestehende Ansätze und präsentiere Alternativen direkt bei Entscheidungsträgern als technischer Vertrauenspartner auf Augenhöhe.',
-    'about.p3':    'Seit Mai 2025 arbeite ich vollständig freiberuflich, remote-first – für industrielle Hersteller, die echte Camos-Expertise brauchen statt einer Agentur, die sich die Plattform erst erschließt. Deutschlandweit und international tätig.',
+    'about.p3':    'Seit Mai 2025 arbeite ich vollständig freiberuflich für industrielle Hersteller, die echte camos®-Expertise brauchen statt einer Agentur, die sich die Plattform erst erschließt. Deutschlandweit und international tätig.',
     'skill1.label': 'CPQ-Plattform',
-    'skill1.value': 'Camos CPQ (camos.Develop v8+, camos.Quotation, camos.CAPP, camos.Selling)',
+    'skill1.value': 'camos® CPQ (camos.Develop v8+, camos.Quotation, camos.CAPP, camos.Selling)',
     'skill2.label': 'ERP-Integration',
     'skill2.value': 'SAP ECC, APICONNECT, Webservice-Schnittstellen (SD-Belege, Materialstamm)',
     'skill3.label': 'CRM-Integration',
     'skill3.value': 'Microsoft Dynamics CRM über Azure.',
+    'skill5.label': 'Weitere Integrationen',
+    'skill5.value': 'REST-APIs, Datenbank-Synchronisationen mit anderen Konfiguratoren, spezielle Auswertung und Ausleitung von Daten nach Excel, XML, JSON, ...',
     'skill4.label': 'Verfügbarkeit',
     'skill4.value': 'Remote-first &nbsp;·&nbsp; Vor-Ort deutschlandweit &nbsp;·&nbsp; International möglich',
 
@@ -93,7 +95,7 @@ const T = {
     'fratch.link':    'Profil ansehen →',
 
     'contact.title':    'Projekt in Planung?',
-    'contact.text':     'Ob Neuprojekt, laufende Unterstützung oder ein konkretes Problem mit Ihrer Camos-Instanz – schreiben Sie mir kurz, was Sie bewegt. Ich melde mich in der Regel innerhalb eines Werktages.',
+    'contact.text':     'Ob Neuprojekt, laufende Unterstützung, Updates oder ein konkretes Problem mit Ihrer camos® Instanz – schreiben Sie mir kurz, was Sie bewegt. Ich melde mich in der Regel innerhalb eines Werktages.',
     'contact.btn':      'Jetzt Kontakt aufnehmen',
     'contact.btn.href': 'mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage',
 
@@ -117,7 +119,7 @@ const T = {
     'imp.copyright.h2':      'Urheberrecht',
     'imp.copyright.text':    'Die Inhalte dieser Website (Texte, Layout, eigene Bilder) unterliegen dem Urheberrecht. Jede Verwertung bedarf der vorherigen Zustimmung, soweit sie nicht gesetzlich gestattet ist.',
     'imp.trademark.h2':      'Markenrechtliche Hinweise',
-    'imp.trademark.text1':   'Die Bezeichnung „camos“ sowie zugehörige Logos sind eingetragene Marken der <strong>camos Software und Beratung GmbH</strong>. Die Verwendung dieser Begriffe auf cpq-solutions.de erfolgt ausschließlich zu beschreibenden Zwecken, um die Software-Plattform zu identifizieren, auf der die angebotenen Dienstleistungen basieren.',
+    'imp.trademark.text1':   'Die Bezeichnung „camos" sowie zugehörige Logos sind eingetragene Marken der <strong>camos Software und Beratung GmbH</strong>. Die Verwendung dieser Begriffe auf cpq-solutions.de erfolgt ausschließlich zu beschreibenden Zwecken, um die Software-Plattform zu identifizieren, auf der die angebotenen Dienstleistungen basieren.',
     'imp.trademark.text2':   'Kai Birkenbusch (cpq-solutions) steht in keiner wirtschaftlichen, rechtlichen oder gesellschaftsrechtlichen Verbindung zur camos Software und Beratung GmbH.',
     'imp.legal.note':        'Rechtsgrundlagen: § 5 Digitale-Dienste-Gesetz (DDG); ggf. § 18 MStV.',
 
@@ -147,15 +149,12 @@ const T = {
     'dse.s7.h2':   '7. Aktualität',
     'dse.s7.p1':   'Wir passen diese Hinweise an, wenn sich Funktionen oder Rechtslagen ändern.',
     'dse.legal.note': 'Hinweise beruhen auf DSGVO Art. 6, 13; GitHub-Hosting-Transparenz; keine Telefonpflicht im Impressum (§ 5 DDG). Keine Rechtsberatung.',
-    
 
     // ── Gemeinsam (alle Seiten) ──────────────────────────────────────────
     'footer.imprint': 'Impressum',
     'footer.privacy': 'Datenschutz',
     'footer.cta':     'Termin anfragen',
     'footer.cta.href':'mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Projektanfrage',
-
-    
   },
 
   // ── ENGLISH ────────────────────────────────────────────────────────────
@@ -164,7 +163,7 @@ const T = {
     'burger.aria': 'Open Menu',
 
     // ── index.html ──────────────────────────────────────────────────────
-    'page.title':  'Kai Birkenbusch – Camos CPQ Specialist | cpq-solutions.de',
+    'page.title':  'Kai Birkenbusch – camos® CPQ Specialist | cpq-solutions.de',
     'page.meta':   'Senior CPQ consultant with 15+ years of Camos expertise. Full-cycle CPQ transformations, SAP integration and process optimisation for industrial manufacturers – available from day one.',
 
     'nav.services':   'Services',
@@ -176,23 +175,23 @@ const T = {
     'nav.cta':        'Schedule a Call',
     'nav.cta.href':   'mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Project%20Inquiry',
 
-    'hero.eyebrow': 'Senior CPQ Consultant &nbsp;·&nbsp; Camos CPQ Specialist',
-    'hero.h1':      'cpq-solutions – <span class="accent">The right tool is only as good as the process behind it.</span>',
-    'hero.sub':     '15+ years of hands-on Camos CPQ expertise across industrial manufacturers: from initial requirements through SAP integration to international go-live. I help companies that need their quoting processes to work reliably – not just look good on paper.',
+    'hero.eyebrow': 'Senior CPQ Consultant &nbsp;·&nbsp; camos® CPQ Specialist',
+    'hero.h1':      'cpq-solutions.de – <span class="accent">The right tool is only as good as the process behind it.</span>',
+    'hero.sub':     '15+ years of hands-on camos® CPQ expertise across industrial manufacturers: from initial requirements through ERP, CRM and further system integrations to international go-live. I help companies that need their quoting processes to work reliably – not just look good on paper.',
     'hero.btn1':    'Let\'s Talk',
     'hero.btn2':    'View Services',
 
-    'stat.years.label':     'Years of Camos Experience',
+    'stat.years.label':     'Years of camos® Experience',
     'stat.clients.label':   'Active Clients',
-    'stat.versions.label':  'Camos CPQ Versions',
+    'stat.versions.label':  'camos CPQ Versions',
     'stat.industries.label':'Industries',
 
     'services.title':  'Services',
-    'services.sub':    'Deep Camos expertise forged in real industrial environments – combined with a growing library of battle-tested solutions I apply across clients to get results faster.',
+    'services.sub':    'Deep camos expertise forged in real industrial environments – combined with a growing library of battle-tested solutions I apply across clients to get results faster.',
     'service1.title':  'CPQ Architecture &amp; Transformation',
-    'service1.text':   'Full-cycle implementation or migration of Camos CPQ quoting solutions – from requirements workshop and system architecture through to international go-live. Delivered with thorough customising, rigorous testing, complete documentation and a clean handover your team can actually build on.',
+    'service1.text':   'Full-cycle implementation or migration of camos CPQ quoting solutions – from requirements workshop and system architecture through to international go-live. Delivered with thorough customising, rigorous testing, complete documentation and a clean handover your team can actually build on.',
     'service2.title':  'SAP Integration',
-    'service2.text':   'Bidirectional ERP connectivity via APICONNECT – the SAP-certified integration platform linking Camos CPQ with SAP ECC. Delivered functions include material master replication, material creation and updates, SD document creation and further web service processes. Everything cleanly structured, fully documented and built for long-term maintainability.',
+    'service2.text':   'Bidirectional ERP connectivity via APICONNECT – the SAP-certified integration platform linking camos® CPQ with SAP ECC. Delivered functions include material master replication, material creation and updates, SD document creation and further web service processes. Everything cleanly structured, fully documented and built for long-term maintainability.',
     'service3.title':  'Process Optimisation &amp; Coaching',
     'service3.text':   'I analyse your existing quoting processes, pinpoint what\'s holding you back, and present concrete improvements directly to decision-makers. Alongside that: hands-on knowledge transfer and pair programming that genuinely upskills your team rather than just fixing today\'s ticket. Plus a growing toolkit of proven solution components I deploy wherever they add real value.',
 
@@ -229,15 +228,17 @@ const T = {
     'quote2.tenure': 'Partnership since 2024',
 
     'about.title': 'About Me',
-    'about.p1':    'I\'m Kai Birkenbusch – 15+ years deep in industrial CPQ. My niche is Camos CPQ and camos Quotation: I\'ve worked with the platform from version 6.x through 13.x, building complete quoting systems from scratch, migrating legacy solutions to current versions, and delivering robust SAP integrations inside complex, internationally structured manufacturing environments.',
+    'about.p1':    'I\'m Kai Birkenbusch – 15+ years deep in industrial CPQ. My niche is camos® CPQ and camos.Quotation: I\'ve worked with the product from version 6.x through 13.x, building complete quoting systems from scratch, migrating legacy solutions to current versions, and delivering robust SAP integrations inside complex, internationally structured manufacturing environments.',
     'about.p2':    'What sets me apart from typical developers: I don\'t think in tickets – I think in business processes. I find the weak spots, challenge assumptions and bring concrete alternatives straight to decision-makers. Not as a vendor, but as a technical peer who is invested in getting it right.',
-    'about.p3':    'Since May 2025, I work exclusively as an independent consultant – remote-first, with on-site availability across Germany and internationally. If you need someone who knows Camos inside out from day one, that is exactly what I offer.',
+    'about.p3':    'Since May 2025, I work exclusively as an independent consultant for industrial manufacturers who need real camos® expertise rather than an agency still figuring out the platform. Available throughout Germany and internationally.',
     'skill1.label': 'CPQ Platform',
-    'skill1.value': 'Camos CPQ (camos.Develop v8+, camos.Quotation, camos.CAPP, camos.Selling)',
+    'skill1.value': 'camos® CPQ (camos.Develop v8+, camos.Quotation, camos.CAPP, camos.Selling)',
     'skill2.label': 'ERP Integration',
     'skill2.value': 'SAP ECC, APICONNECT, Web Service Interfaces (SD Documents, Material Master)',
     'skill3.label': 'CRM Integration',
     'skill3.value': 'Microsoft Dynamics CRM via Azure.',
+    'skill5.label': 'Further Integrations',
+    'skill5.value': 'REST APIs, database synchronisation with other configurators, custom data extraction to Excel, XML, JSON, and more.',
     'skill4.label': 'Availability',
     'skill4.value': 'Remote-first &nbsp;·&nbsp; On-site throughout Germany &nbsp;·&nbsp; International on request',
 
@@ -246,7 +247,7 @@ const T = {
     'fratch.link':    'View Profile →',
 
     'contact.title':    'Got a Project in Mind?',
-    'contact.text':     'New implementation, ongoing support or a specific Camos challenge you can\'t crack – send me a quick note about what you\'re working on. I\'ll get back to you within one business day.',
+    'contact.text':     'New implementation, ongoing support, updates or a specific camos® challenge you can\'t crack – send me a quick note about what you\'re working on. I\'ll get back to you within one business day.',
     'contact.btn':      'Get in Touch',
     'contact.btn.href': 'mailto:kai-birkenbusch@cpq-solutions.de?subject=CPQ%20Project%20Inquiry',
 
