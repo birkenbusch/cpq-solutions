@@ -42,7 +42,7 @@ const T = {
     'service2.title':  'SAP-Integration',
     'service2.text':   'Bidirektionale ERP-Anbindung über APICONNECT – die SAP-zertifizierte Integrationsplattform für Schnittstellen zwischen camos® CPQ und SAP ECC. Realisierte Funktionen umfassen u.a. Materialstamm-Replikation, Materialanlage und -änderung, SD-Beleganlage sowie weitere Webservice-Prozesse – sauber strukturiert, vollständig dokumentiert und wartbar aufgebaut.',
     'service3.title':  'Prozessoptimierung &amp; Coaching',
-    'service3.text':   'Analyse bestehender Angebotsprozesse, Identifikation von Verbesserungspotenzialen mit direkter Präsentation bei Entscheidungsträgern sowie gezielter Knowledge-Transfer und Pair-Programming fürs interne Team. Dazu: Ein wachsendes Repertoire bewährter Lösungsbausteine, die ich gezielt dort einsetze, wo sie Mehrwert schaffen.',
+    'service3.text':   'Analyse bestehender Angebotsprozesse, Identifikation von Verbesserungspotenzialen mit direkter Präsentation bei Entscheidungsträgern sowie gezielter Knowledge-Transfer und Pair-Programming fürs interne Team. Dazu: Ein wachsendes Repertoire bewährter Lösungsbausteine, das branchenunabhägig ist.',
 
     'exp.title':             'Erfahrungsprofil',
     'exp.sub':               'Wo und wie die 15+ Jahre eingesetzt wurden.',
