@@ -36,7 +36,7 @@ const T = {
     'stat.industries.label':'Industrien',
 
     'services.title':  'Leistungen',
-    'services.sub':    'Tiefe camos-Expertise aus der Praxis und ein Repertoire an bewährten Lösungen, das ich gezielt zwischen Kunden einsetze.',
+    'services.sub':    'Tiefe camos-Expertise aus der Praxis und ein Repertoire an bewährten Lösungen, das ich bei gern auch bei Ihnen einsetze.',
     'service1.title':  'CPQ-Architektur &amp; Transformation',
     'service1.text':   'Neuaufbau oder Migration kompletter Angebotslösungen auf Basis von camos CPQ von der Anforderungsanalyse über das Systemdesign bis zum internationalen Go-Live. Inklusive Customizing, Testing, Dokumentation und Übergabe.',
     'service2.title':  'SAP-Integration',
