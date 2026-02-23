@@ -45,7 +45,7 @@ const T = {
     'service3.text':   'Analyse bestehender Angebotsprozesse, Identifikation von Verbesserungspotenzialen mit direkter Präsentation bei Entscheidungsträgern sowie gezielter Knowledge-Transfer und Pair-Programming fürs interne Team. Dazu: Ein wachsendes Repertoire bewährter Lösungsbausteine, das branchenunabhägig ist.',
 
     'exp.title':             'Erfahrungsprofil',
-    'exp.sub':               'Wo und wie die 15+ Jahre eingesetzt wurden.',
+    'exp.sub':               'In meiner beruflichen Laufbahn habe ich in diversen Branchen gearbeitet. Jede davon hatte ihre eigenen Vorstellungen wie der Angebotsprozess funktionieren soll. Diese Vielfalt hat mich gelehrt Muster zu erkennen, zu benennen und Lösungen zu übertragen.',
     'exp.industries.label':  'Branchen',
     'ind.parking':    'Parkraumtechnologie',
     'ind.signalling': 'Signalling Systems',
