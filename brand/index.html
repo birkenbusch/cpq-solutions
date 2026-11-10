@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Corporate Design · cpq-solutions.de</title>
+<link rel="icon" type="image/svg+xml" href="logo/signet-dunkel.svg">
+<style>
+  @font-face { font-family: 'Jost'; font-weight: 300; src: url(fonts/Jost-Light.ttf); }
+  @font-face { font-family: 'Jost'; font-weight: 400; src: url(fonts/Jost-Regular.ttf); }
+  @font-face { font-family: 'Jost'; font-weight: 500; src: url(fonts/Jost-Medium.ttf); }
+  @font-face { font-family: 'Jost'; font-weight: 600; src: url(fonts/Jost-SemiBold.ttf); }
+  @font-face { font-family: 'Syne'; font-weight: 700; src: url(fonts/Syne-Bold.ttf); }
+  @font-face { font-family: 'Syne'; font-weight: 800; src: url(fonts/Syne-ExtraBold.ttf); }
+  :root { --bg:#0f172a; --deep:#07111f; --border:#1e2d45; --muted:#94a3b8; --fg:#e2e8f0; --accent:#38bdf8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--deep); color: var(--fg); font: 400 16px/1.65 'Jost', system-ui, sans-serif; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 56px 24px 96px; }
+  h1, h2 { font-family: 'Syne', sans-serif; font-weight: 700; line-height: 1.15; letter-spacing: -.02em; }
+  h1 { font-size: clamp(32px, 5vw, 52px); margin: 24px 0 8px; }
+  h2 { font-size: 26px; margin: 72px 0 8px; display: flex; gap: 12px; align-items: center; }
+  h2::before { content: ''; width: 22px; height: 22px; background: url(logo/signet-dunkel.svg) center/contain no-repeat; }
+  .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .12em; font-size: 13px; font-weight: 500; }
+  .lead { color: var(--muted); max-width: 680px; }
+  a { color: var(--accent); }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .card { border: 1px solid var(--border); border-radius: 14px; background: rgba(255,255,255,.03); padding: 20px; }
+  .logo-box { border-radius: 14px; padding: 40px 32px; display: grid; place-items: center; min-height: 160px; border: 1px solid var(--border); }
+  .logo-box img { max-width: 100%; width: 380px; }
+  .logo-box.light { background: #fff; } .logo-box.dark { background: var(--bg); }
+  .logo-box.sig img { width: 72px; }
+  .cap { font-size: 13px; color: var(--muted); margin-top: 10px; }
+  .sw { height: 96px; border-radius: 10px; margin-bottom: 12px; border: 1px solid var(--border); }
+  .sw-name { font-weight: 600; } .sw-val { font: 400 13px/1.6 ui-monospace, monospace; color: var(--muted); }
+  .type-syne { font: 800 44px/1.1 'Syne'; letter-spacing: -.02em; }
+  .type-jost { font: 300 22px/1.5 'Jost'; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  td, th { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; }
+  .preview img { width: 100%; border-radius: 10px; border: 1px solid var(--border); display: block; }
+  .dl { display: inline-block; margin: 8px 12px 0 0; font-size: 14px; }
+  ul { padding-left: 20px; } li { margin: 4px 0; }
+  .do { color: #4ade80; } .dont { color: #f87171; }
+  @media (max-width: 600px) { .wrap { padding: 32px 16px 64px; } h2 { margin-top: 56px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <img src="logo/logo-dunkel.svg" alt="cpq-solutions.de" width="260">
+  <h1>Corporate Design</h1>
+  <p class="eyebrow">Senior CPQ-Berater · camos® CPQ Spezialist</p>
+  <p class="lead">Abgeleitet aus der Webseite cpq-solutions.de: dunkles Navy, ein klares Himmelblau als Akzent, die eckige Klammer <b>[ • ]</b> als Signet und Zahnräder als Bildsprache – Prozesse, die ineinandergreifen.</p>
+
+  <h2>Logo</h2>
+  <p class="lead">Wortmarke in Syne Bold, eingefasst von zwei Klammern. Der Punkt vor „de“ ist Teil der Marke. Alle Dateien sind als Vektor (SVG, Text in Pfaden) und als PNG vorhanden.</p>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+    <div><div class="logo-box dark"><img src="logo/logo-dunkel.svg" alt=""></div><div class="cap">logo-dunkel – auf dunklem Grund (Standard)</div></div>
+    <div><div class="logo-box light"><img src="logo/logo-hell.svg" alt=""></div><div class="cap">logo-hell – auf weißem Grund, Druck, Briefbogen</div></div>
+    <div><div class="logo-box" style="background:#0ea5e9"><img src="logo/logo-weiss.svg" alt=""></div><div class="cap">logo-weiss – einfarbig auf Farbe oder Foto</div></div>
+    <div><div class="logo-box light"><img src="logo/logo-schwarz.svg" alt=""></div><div class="cap">logo-schwarz – Stempel, Fax, Graustufen</div></div>
+  </div>
+  <div class="grid" style="margin-top:16px">
+    <div><div class="logo-box dark sig"><img src="logo/signet-dunkel.svg" alt=""></div><div class="cap">Signet – Favicon, Profilbild, Aufzählungen</div></div>
+    <div><div class="logo-box light sig"><img src="logo/signet-hell.svg" alt=""></div><div class="cap">Signet hell</div></div>
+  </div>
+  <ul>
+    <li><span class="do">✓</span> Schutzzone rundum: mindestens die Breite einer Klammer.</li>
+    <li><span class="do">✓</span> Mindestbreite: 30 mm im Druck, 140 px am Bildschirm; darunter nur das Signet.</li>
+    <li><span class="dont">✕</span> Nicht verzerren, nicht drehen, keine Schatten, keine anderen Farben als hier gezeigt.</li>
+    <li><span class="dont">✕</span> Himmelblau #38bdf8 nicht als Textfarbe auf Weiß – dafür gibt es das Druck-Blau #0ea5e9.</li>
+  </ul>
+
+  <h2>Farben</h2>
+  <div class="grid">
+    <div class="card"><div class="sw" style="background:#0f172a"></div><div class="sw-name">Navy</div><div class="sw-val">#0F172A · RGB 15 23 42<br>≈ CMYK 100 85 40 60</div></div>
+    <div class="card"><div class="sw" style="background:#07111f"></div><div class="sw-name">Tiefnavy (Hintergrund)</div><div class="sw-val">#07111F · RGB 7 17 31<br>≈ CMYK 100 80 40 80</div></div>
+    <div class="card"><div class="sw" style="background:#38bdf8"></div><div class="sw-name">Himmelblau (Akzent)</div><div class="sw-val">#38BDF8 · RGB 56 189 248<br>≈ CMYK 65 10 0 0</div></div>
+    <div class="card"><div class="sw" style="background:#0ea5e9"></div><div class="sw-name">Druck-Blau</div><div class="sw-val">#0EA5E9 · RGB 14 165 233<br>≈ CMYK 80 20 0 0</div></div>
+    <div class="card"><div class="sw" style="background:#2a7ab4"></div><div class="sw-name">Zahnrad-Blau</div><div class="sw-val">#2A7AB4 · RGB 42 122 180<br>Linien, Grafik</div></div>
+    <div class="card"><div class="sw" style="background:#e2e8f0"></div><div class="sw-name">Hellgrau (Text auf dunkel)</div><div class="sw-val">#E2E8F0 · RGB 226 232 240</div></div>
+    <div class="card"><div class="sw" style="background:#94a3b8"></div><div class="sw-name">Grau (Nebentext)</div><div class="sw-val">#94A3B8 · RGB 148 163 184</div></div>
+    <div class="card"><div class="sw" style="background:#1e293b"></div><div class="sw-name">Schiefer (Text auf weiß)</div><div class="sw-val">#1E293B · RGB 30 41 59</div></div>
+  </div>
+  <p class="cap">CMYK-Werte sind Näherungen – für Druckaufträge immer ein Proof anfordern.</p>
+
+  <h2>Schriften</h2>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr))">
+    <div class="card"><div class="type-syne">Syne</div><div class="cap">Überschriften, Wortmarke · Bold 700 / ExtraBold 800 · Laufweite −2 %</div></div>
+    <div class="card"><div class="type-jost">Jost – klar und sachlich für Fließtext.</div><div class="cap">Fließtext · Light 300, Regular 400, Medium 500, SemiBold 600</div></div>
+  </div>
+  <p class="lead">Beide Schriften liegen in <code>brand/fonts/</code> (SIL Open Font License, frei nutzbar) und müssen für die Word-Vorlage einmal installiert werden. Ersatzschrift: Arial.</p>
+
+  <h2>Bildsprache</h2>
+  <p class="lead">Ineinandergreifende Zahnräder als feine Linien mit leuchtenden Punkten, darunter ein dezentes Raster – auf Tiefnavy. Elemente stehen am Rand; die Mitte bleibt ruhig.</p>
+
+  <h2>Vorlagen</h2>
+  <table>
+    <tr><th>Datei</th><th>Format</th><th>Einsatz</th></tr>
+    <tr><td><a href="export/teams-hintergrund-1920x1080.png">teams-hintergrund-1920x1080.png</a><br><a href="export/teams-hintergrund-ohne-logo-1920x1080.png">… ohne Logo</a></td><td>1920 × 1080 px</td><td>Microsoft Teams → Hintergrundeffekte → Hinzufügen. Teams spiegelt nur die eigene Vorschau – Ihr Gegenüber sieht das Logo richtig herum.</td></tr>
+    <tr><td><a href="export/briefvorlage.docx">briefvorlage.docx</a></td><td>Word, A4</td><td>Briefe schreiben (DIN 5008, Form B)</td></tr>
+    <tr><td><a href="export/briefbogen-leer-A4.pdf">briefbogen-leer-A4.pdf</a><br><a href="export/briefbogen-beispiel-A4.pdf">briefbogen-beispiel-A4.pdf</a></td><td>PDF, A4</td><td>Briefpapier drucken lassen / Beispiel. Editierbar: <a href="vorlagen/briefkopf.html">vorlagen/briefkopf.html</a> im Browser öffnen, Text anklicken, als PDF drucken.</td></tr>
+    <tr><td><a href="export/adventskalender-A4quer-beschnitt3mm.pdf">adventskalender-A4quer-beschnitt3mm.pdf</a><br><a href="export/adventskalender-mit-tueren-A4quer-beschnitt3mm.pdf">… mit 24 Türchen</a></td><td>303 × 216 mm (A4 quer + 3 mm Beschnitt), 300 dpi</td><td>Druckvorlage Adventskalender. Zusätzlich als JPG. Texte halten 10 mm Abstand zum Schnitt.</td></tr>
+  </table>
+
+  <div class="grid" style="margin-top:24px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+    <div class="preview"><img src="export/teams-hintergrund-1920x1080.png" alt="Teams-Hintergrund"><div class="cap">Teams-Hintergrund</div></div>
+    <div class="preview"><img src="export/adventskalender-A4quer-300dpi-beschnitt3mm.jpg" alt="Adventskalender"><div class="cap">Adventskalender</div></div>
+  </div>
+
+  <h2>Neu erzeugen</h2>
+  <p class="lead">Alle Bilder werden aus den HTML-Vorlagen gerendert. Nach Änderungen (z. B. Bankdaten im Briefkopf):</p>
+  <pre class="card" style="overflow:auto"><code>pip install fonttools python-docx
+python3 brand/build/make_logo.py     # Logos (SVG)
+node brand/build/render.js           # PNG/JPG/PDF in brand/export (Playwright)
+python3 brand/build/make_docx.py     # Word-Vorlage</code></pre>
+</div>
+</body>
+</html>

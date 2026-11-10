@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Briefkopf cpq-solutions.de</title>
+<!--
+  Briefbogen nach DIN 5008, Form B (A4).
+  ?leer=1  → nur Briefbogen (zum Vordrucken bzw. als Hintergrund)
+  sonst    → Beispielbrief. Texte direkt im Browser editierbar, dann Drucken → „Als PDF speichern“
+             (Ränder: keine, Hintergrundgrafiken: an).
+-->
+<style>
+  @font-face { font-family: 'Jost'; font-weight: 300; src: url(../fonts/Jost-Light.ttf); }
+  @font-face { font-family: 'Jost'; font-weight: 400; src: url(../fonts/Jost-Regular.ttf); }
+  @font-face { font-family: 'Jost'; font-weight: 500; src: url(../fonts/Jost-Medium.ttf); }
+  @font-face { font-family: 'Jost'; font-weight: 600; src: url(../fonts/Jost-SemiBold.ttf); }
+  @font-face { font-family: 'Syne'; font-weight: 700; src: url(../fonts/Syne-Bold.ttf); }
+
+  :root {
+    --navy: #0f172a; --text: #1e293b; --muted: #64748b; --line: #cbd5e1;
+    --accent: #0ea5e9; --accent-web: #38bdf8;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #e2e8f0; }
+  body { font: 400 10.5pt/1.45 'Jost', Arial, sans-serif; color: var(--text); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .page { position: relative; width: 210mm; height: 297mm; margin: 10mm auto; background: #fff; overflow: hidden; box-shadow: 0 4px 24px rgba(15,23,42,.15); }
+  @media print { html, body { background: #fff; } .page { margin: 0; box-shadow: none; } }
+
+  /* Kopfzone 0–45 mm */
+  .head-band { position: absolute; left: 0; top: 0; width: 100%; height: 6mm; background: var(--navy); }
+  .head-band::after { content: ''; position: absolute; left: 0; bottom: -0.8mm; width: 100%; height: 0.8mm; background: var(--accent-web); }
+  .logo { position: absolute; right: 20mm; top: 16mm; width: 68mm; }
+  .claim { position: absolute; right: 20.5mm; top: 30mm; font: 500 7.2pt/1 'Jost'; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  .gear { position: absolute; left: -38mm; top: -40mm; width: 95mm; opacity: .07; }
+
+  /* Falz- und Lochmarken */
+  .mark { position: absolute; left: 0; height: 0; border-top: .25mm solid var(--line); }
+  .m1 { top: 105mm; width: 5mm; } .m2 { top: 210mm; width: 5mm; } .m3 { top: 148.5mm; width: 8mm; }
+
+  /* Anschriftfeld: 20 mm links, 45 mm oben, 85 × 45 mm */
+  .address { position: absolute; left: 20mm; top: 45mm; width: 85mm; height: 45mm; }
+  .sender { position: absolute; top: 12.7mm; left: 5mm; right: 0; font-size: 7pt; color: var(--muted); border-bottom: .2mm solid var(--line); padding-bottom: .6mm; white-space: nowrap; }
+  .recipient { position: absolute; top: 17.7mm; left: 5mm; right: 0; line-height: 1.35; }
+
+  /* Informationsblock: 125 mm links, ab 50 mm */
+  .info { position: absolute; left: 125mm; top: 50mm; width: 75mm; font-size: 8.5pt; line-height: 1.5; }
+  .info dt { color: var(--muted); float: left; clear: left; width: 24mm; }
+  .info dd { margin: 0 0 0 24mm; }
+  .info .sp { height: 3mm; }
+
+  /* Brieftext ab 98,46 mm, links 25 mm, rechts 20 mm */
+  .body { position: absolute; left: 25mm; right: 20mm; top: 103mm; bottom: 34mm; }
+  .subject { font: 600 11pt/1.3 'Jost'; color: var(--navy); margin: 0 0 8mm; }
+  .body p { margin: 0 0 4mm; }
+  .sign { margin-top: 10mm; }
+  .sign .name { font-weight: 500; color: var(--navy); margin-top: 12mm; }
+
+  /* Fußzeile */
+  .foot { position: absolute; left: 25mm; right: 20mm; bottom: 10mm; display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 6mm; font-size: 7pt; line-height: 1.5; color: var(--muted); padding-top: 3mm; border-top: .25mm solid var(--line); }
+  .foot b { font-weight: 600; color: var(--navy); }
+  .foot .sig { position: absolute; right: 0; top: -6mm; width: 8mm; background: #fff; padding-left: 2mm; }
+
+  [contenteditable]:focus { outline: 1px dashed var(--accent); }
+  body.leer .fill { display: none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <svg class="gear" viewBox="-110 -110 220 220" aria-hidden="true"><g fill="none" stroke="#0f172a" stroke-width="1.6" id="gear"></g></svg>
+  <div class="head-band"></div>
+  <img class="logo" src="../logo/logo-hell.svg" alt="cpq-solutions.de">
+  <div class="claim">Senior CPQ-Berater · camos® CPQ Spezialist</div>
+
+  <div class="mark m1"></div><div class="mark m3"></div><div class="mark m2"></div>
+
+  <div class="address">
+    <div class="sender">cpq-solutions.de · Kai Birkenbusch · Europaring 60 · 53757 Sankt Augustin</div>
+    <div class="recipient fill" contenteditable>
+      Musterfirma GmbH<br>
+      Frau Erika Mustermann<br>
+      Musterstraße 1<br>
+      12345 Musterstadt
+    </div>
+  </div>
+
+  <dl class="info fill" contenteditable>
+    <dt>Ihr Zeichen</dt><dd>EM/2026</dd>
+    <dt>Unser Zeichen</dt><dd>KB</dd>
+    <div class="sp"></div>
+    <dt>Ansprechpartner</dt><dd>Kai Birkenbusch</dd>
+    <dt>E-Mail</dt><dd>kai-birkenbusch@cpq-solutions.de</dd>
+    <div class="sp"></div>
+    <dt>Datum</dt><dd>10. November 2026</dd>
+  </dl>
+
+  <div class="body fill" contenteditable>
+    <div class="subject">Angebot: Einführung camos CPQ – Phase 1</div>
+    <p>Sehr geehrte Frau Mustermann,</p>
+    <p>vielen Dank für das angenehme Gespräch. Wie besprochen erhalten Sie anbei mein Angebot für die Anforderungsanalyse und die Konzeption Ihrer CPQ-Lösung.</p>
+    <p>Das beste Werkzeug ist ohne Prozess nur ein teures Spielzeug – deshalb beginnen wir mit Ihren Angebotsprozessen und leiten daraus die Konfigurationslogik, die Integration in Ihr ERP und CRM sowie einen realistischen Fahrplan bis zum Go-Live ab.</p>
+    <p>Für Rückfragen stehe ich Ihnen jederzeit gern zur Verfügung.</p>
+    <div class="sign">
+      Mit freundlichen Grüßen
+      <div class="name">Kai Birkenbusch</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div><b>cpq-solutions.de</b><br>Kai Birkenbusch (Einzelunternehmen)<br>c/o Online-Impressum.de #4879<br>Europaring 60 · 53757 Sankt Augustin</div>
+    <div><b>Kontakt</b><br>kai-birkenbusch@cpq-solutions.de<br>www.cpq-solutions.de</div>
+    <div><b>Steuern &amp; Bank</b><br>Steuer-Nr. / USt-IdNr.: ergänzen<br>IBAN: ergänzen<br>BIC: ergänzen</div>
+    <img class="sig" src="../logo/signet-hell.svg" alt="">
+  </div>
+</div>
+<script>
+  if (new URLSearchParams(location.search).get('leer')) document.body.classList.add('leer');
+  // Zahnrad-Wasserzeichen (gleiche Geometrie wie auf der Webseite)
+  (function () {
+    const g = document.getElementById('gear'), r = 80, teeth = 40, th = r * .18, step = Math.PI * 2 / teeth, tw = step * .38;
+    let d = '';
+    for (let i = 0; i < teeth; i++) {
+      const a = i * step;
+      [[a - step / 2 + tw, r], [a - tw, r + th], [a + tw, r + th], [a + step / 2 - tw, r]].forEach(([pa, pr], k) =>
+        d += (i === 0 && k === 0 ? 'M' : 'L') + (Math.cos(pa) * pr).toFixed(2) + ' ' + (Math.sin(pa) * pr).toFixed(2));
+    }
+    let html = `<path d="${d}Z"/><circle r="${r * .62}"/><circle r="${r * .18}"/>`;
+    for (let s = 0; s < 7; s++) {
+      const a = Math.PI * 2 / 7 * s;
+      html += `<line x1="${Math.cos(a) * r * .27}" y1="${Math.sin(a) * r * .27}" x2="${Math.cos(a) * r * .57}" y2="${Math.sin(a) * r * .57}"/>`;
+    }
+    g.innerHTML = html;
+  })();
+</script>
+</body>
+</html>
