@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Adventskalender</title>
+<style>
+  @font-face { font-family: 'Jost'; font-weight: 300; src: url(../fonts/Jost-Light.ttf); }
+  @font-face { font-family: 'Jost'; font-weight: 500; src: url(../fonts/Jost-Medium.ttf); }
+  @font-face { font-family: 'Syne'; font-weight: 700; src: url(../fonts/Syne-Bold.ttf); }
+  @font-face { font-family: 'Syne'; font-weight: 800; src: url(../fonts/Syne-ExtraBold.ttf); }
+  html, body { margin: 0; background: #07111f; }
+  canvas { display: block; width: 100vw; height: auto; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script src="../build/gears.js"></script>
+<script>
+/* Druckmotiv A4 quer, 300 dpi, inkl. 3 mm Beschnitt rundum:
+   303 × 216 mm  →  3579 × 2551 px.  Sicherheitsabstand für Texte: 10 mm ab Endformat.
+   ?tueren=1 → zusätzlich 24 nummerierte Türchen. */
+(async () => {
+  const { C, setup, background, grid, gear, dot, rng } = CPQ;
+  const q = new URLSearchParams(location.search);
+  const MM = 300 / 25.4;
+  const W = Math.round(303 * MM), H = Math.round(216 * MM);
+  const BLEED = 3 * MM, SAFE = BLEED + 10 * MM;
+  const U = W / 1920;                       // Maßstab relativ zum Teams-Bild
+  const ctx = setup(document.getElementById('c'), W, H);
+  const rand = rng(2026);
+
+  background(ctx, W, H, { cx: W * 0.33, cy: H * 0.55 });
+  grid(ctx, W, H, 60 * U, 0.28, 0.8 * U);
+
+  // Dezente Zahnräder in den Ecken
+  gear(ctx, { x: W * 0.98, y: H * 0.02, r: 210 * U, teeth: 72, angle: .3, alpha: .14, stroke: C.g2, lineW: 1.6 }, U);
+  gear(ctx, { x: W * 1.0, y: H * 1.02, r: 300 * U, teeth: 96, angle: .1, alpha: .12, stroke: C.g1, lineW: 1.6 }, U);
+
+  // ── Weihnachtsbaum aus Zahnrädern ─────────────────────────────
+  const cx = W * 0.29, base = H * 0.84;
+  const rows = [
+    { n: 1, r: 46 }, { n: 2, r: 52 }, { n: 3, r: 56 }, { n: 4, r: 60 }, { n: 5, r: 63 },
+  ];
+  const strokes = [C.g5, C.g4, C.g4, C.g3, C.g2];
+  let y = base - 40 * U;
+  const placed = [];
+  for (let i = rows.length - 1; i >= 0; i--) {
+    const { n, r } = rows[i];
+    const R = r * U * 1.2, pitch = R * 2.3;
+    for (let k = 0; k < n; k++) {
+      const x = cx + (k - (n - 1) / 2) * pitch;
+      placed.push({ x, y: y - R, r: R, teeth: Math.round(R / (8 * U)) * 2 + 8,
+                    angle: (k + i) % 2 ? Math.PI / 20 : 0, alpha: .55 - i * .02, stroke: strokes[i],
+                    lineW: 2.2, glowEvery: 3, fill: C.bg });
+    }
+    y -= R * 2.02;
+  }
+  placed.forEach(g => gear(ctx, g, U * 1.3));
+
+  // Stamm
+  ctx.save();
+  ctx.strokeStyle = C.g3; ctx.globalAlpha = .55; ctx.lineWidth = 3 * U;
+  const tw = 60 * U, th = 56 * U;
+  ctx.strokeRect(cx - tw / 2, base - 40 * U + 4 * U, tw, th);
+  ctx.restore();
+
+  // Stern = Signet [•] mit Strahlen
+  const sy = y - 60 * U, ss = 100 * U;
+  const star = ctx.createRadialGradient(cx, sy, 0, cx, sy, ss * 2.6);
+  star.addColorStop(0, 'rgba(120,215,255,0.55)'); star.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = star; ctx.beginPath(); ctx.arc(cx, sy, ss * 2.6, 0, Math.PI * 2); ctx.fill();
+  ctx.save();
+  ctx.strokeStyle = C.accent; ctx.lineWidth = ss * .095; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const s = ss / 32;
+  ctx.beginPath(); ctx.moveTo(cx + (10 - 16) * s, sy + (8 - 16) * s); ctx.lineTo(cx + (6 - 16) * s, sy + (8 - 16) * s);
+  ctx.lineTo(cx + (6 - 16) * s, sy + (24 - 16) * s); ctx.lineTo(cx + (10 - 16) * s, sy + (24 - 16) * s); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx + (22 - 16) * s, sy + (8 - 16) * s); ctx.lineTo(cx + (26 - 16) * s, sy + (8 - 16) * s);
+  ctx.lineTo(cx + (26 - 16) * s, sy + (24 - 16) * s); ctx.lineTo(cx + (22 - 16) * s, sy + (24 - 16) * s); ctx.stroke();
+  ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(cx, sy, 3 * s, 0, Math.PI * 2); ctx.fill();
+  ctx.globalAlpha = .5; ctx.lineWidth = 2 * U;
+  for (let i = 0; i < 12; i++) {
+    const a = i * Math.PI / 6, r1 = ss * (i % 2 ? .95 : .85), r2 = ss * (i % 2 ? 1.35 : 1.9);
+    ctx.beginPath(); ctx.moveTo(cx + Math.cos(a) * r1, sy + Math.sin(a) * r1);
+    ctx.lineTo(cx + Math.cos(a) * r2, sy + Math.sin(a) * r2); ctx.stroke();
+  }
+  ctx.restore();
+
+  // Schnee / Sterne
+  for (let i = 0; i < 260; i++) {
+    const x = rand() * W, yy = rand() * H, z = rand();
+    dot(ctx, x, yy, (4 + z * 12) * U, (0.8 + z * 2.2) * U, .25 + z * .4, .3 + z * .6);
+  }
+  // Boden
+  ctx.save();
+  const fl = ctx.createLinearGradient(0, base, 0, H);
+  fl.addColorStop(0, 'rgba(56,189,248,0.10)'); fl.addColorStop(1, 'rgba(56,189,248,0)');
+  ctx.fillStyle = fl; ctx.fillRect(0, base + 60 * U, W, H);
+  ctx.strokeStyle = C.accent; ctx.globalAlpha = .35; ctx.lineWidth = 2 * U;
+  ctx.beginPath(); ctx.moveTo(SAFE, base + 60 * U); ctx.lineTo(W * 0.56, base + 60 * U); ctx.stroke();
+  ctx.restore();
+
+  // ── Text ──────────────────────────────────────────────────────
+  await Promise.all(['800 100px Syne', '700 100px Syne', '300 40px Jost', '500 40px Jost'].map(f => document.fonts.load(f)));
+  const tx = W * 0.565, maxW = W - SAFE - tx;
+  ctx.textBaseline = 'alphabetic';
+  ctx.letterSpacing = `${-2 * U}px`;
+  ctx.font = `800 100px Syne`;
+  const fs = Math.min(128 * U, 100 * maxW / ctx.measureText('Weihnachten').width);
+  const y0 = H * 0.36;
+  ctx.fillStyle = C.accent; ctx.font = `500 ${28 * U}px Jost`; ctx.letterSpacing = `${6 * U}px`;
+  ctx.fillText('ADVENT · ADVENT', tx, y0);
+  ctx.letterSpacing = `${-2 * U}px`; ctx.font = `800 ${fs}px Syne`;
+  ctx.fillStyle = C.fg; ctx.fillText('Frohe', tx, y0 + fs * 1.15);
+  ctx.fillStyle = C.accent; ctx.fillText('Weihnachten', tx, y0 + fs * 2.2);
+  ctx.letterSpacing = '0px';
+  ctx.fillStyle = C.muted; ctx.font = `300 ${34 * U}px Jost`;
+  ['24 Türchen, perfekt konfiguriert –', 'damit das Fest ohne Rückfragen gelingt.']
+    .forEach((l, i) => ctx.fillText(l, tx, y0 + fs * 2.2 + 90 * U + i * 52 * U));
+
+  const logo = await CPQ.loadImage('../logo/logo-dunkel.svg');
+  const lw = 520 * U, lh = lw * logo.height / logo.width;
+  ctx.drawImage(logo, W - SAFE - lw, H - SAFE - lh, lw, lh);
+
+  // ── Optionale Türchen ─────────────────────────────────────────
+  if (q.get('tueren')) {
+    // Freizuhaltende Bereiche: Textblock und Logo
+    const keep = [
+      [tx - 40 * U, y0 - 70 * U, W - SAFE + 10 * U, y0 + fs * 2.2 + 210 * U],
+      [W - SAFE - lw - 30 * U, H - SAFE - lh - 40 * U, W, H],
+    ];
+    const bw = 150 * U, bh = 130 * U;
+    const spots = [{ x: cx, y: sy, n: 24, big: true }];
+    const free = (x, y) => x > SAFE + bw / 2 && x < W - SAFE - bw / 2 && y > SAFE + bh / 2 && y < H - SAFE - bh / 2
+      && keep.every(([x1, y1, x2, y2]) => x + bw / 2 < x1 || x - bw / 2 > x2 || y + bh / 2 < y1 || y - bh / 2 > y2)
+      && spots.every(p => Math.abs(p.x - x) > bw * (p.big ? 1.9 : 1.45) || Math.abs(p.y - y) > bh * (p.big ? 1.9 : 1.45));
+    let tries = 0;
+    while (spots.length < 24 && tries++ < 200000) {
+      const x = SAFE + rand() * (W - 2 * SAFE), y = SAFE + rand() * (H - 2 * SAFE);
+      if (free(x, y)) spots.push({ x, y });
+    }
+    const nums = [...Array(23)].map((_, i) => i + 1).sort(() => rand() - .5);
+    spots.slice(1).forEach((p, i) => p.n = nums[i]);
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    spots.forEach(({ x, y: yy, n, big }) => {
+      const f = big ? 1.7 : 1, w = bw * f, h = bh * f, k = 20 * U * f;
+      ctx.save();
+      ctx.fillStyle = 'rgba(7,17,31,0.6)'; ctx.fillRect(x - w / 2, yy - h / 2, w, h);
+      ctx.strokeStyle = C.accent; ctx.lineWidth = 4 * U * f; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      for (const sx of [-1, 1]) {
+        ctx.beginPath(); ctx.moveTo(x + sx * (w / 2 - k), yy - h / 2); ctx.lineTo(x + sx * w / 2, yy - h / 2);
+        ctx.lineTo(x + sx * w / 2, yy + h / 2); ctx.lineTo(x + sx * (w / 2 - k), yy + h / 2); ctx.stroke();
+      }
+      ctx.font = `700 ${58 * U * f}px Syne`;
+      ctx.fillStyle = big ? '#fff' : C.fg; ctx.fillText(String(n), x, yy + 4 * U * f);
+      ctx.restore();
+    });
+  }
+
+  // ── Optionale Schnittmarken-Vorschau ─────────────────────────
+  if (q.get('beschnitt')) {
+    ctx.save(); ctx.strokeStyle = '#ff3b6b'; ctx.lineWidth = 3; ctx.setLineDash([20, 12]);
+    ctx.strokeRect(BLEED, BLEED, W - 2 * BLEED, H - 2 * BLEED);
+    ctx.strokeStyle = '#ffd166'; ctx.strokeRect(SAFE, SAFE, W - 2 * SAFE, H - 2 * SAFE);
+    ctx.restore();
+  }
+  document.body.dataset.ready = '1';
+})();
+</script>
+</body>
+</html>
